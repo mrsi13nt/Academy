@@ -27,8 +27,8 @@
     .app-view{display:none;min-height:70vh;padding:42px 0 80px}.app-view.active{display:block}.panel{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:24px}.auth-wrap{max-width:460px;margin:35px auto}.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:12px;color:#bbb;font-weight:700}.field input,.field textarea,.field select{width:100%;background:#090909;border:1px solid #333;color:white;border-radius:4px;padding:12px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--red)}.field textarea{min-height:85px;resize:vertical}.muted{color:var(--muted)}.notice{padding:12px 14px;border-radius:4px;background:#201316;border:1px solid #5c2029;color:#ffabb1;font-size:13px;margin:14px 0}.success{background:#10231c;border-color:#245c43;color:#9ce8c4}.tabs{display:flex;gap:8px;margin-bottom:20px}.tabs button.active{background:var(--red);border-color:var(--red);color:white}
     .dashboard-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:25px}.dashboard-top h1{font:42px "Bebas Neue";margin:5px 0}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.toolbar input,.toolbar select{background:#111;border:1px solid #333;color:white;padding:10px;border-radius:4px}.toolbar input{flex:1;min-width:180px}.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.video-card{background:#121212;border:1px solid #292929;border-radius:6px;overflow:hidden;cursor:pointer;transition:.2s}.video-card:hover{transform:translateY(-3px);border-color:#81313a}.thumb{aspect-ratio:16/9;background:#222;position:relative;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.thumb .play{position:absolute;inset:0;display:grid;place-items:center;background:#0004;font-size:38px;text-shadow:0 2px 12px #000}.video-info{padding:15px}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px}.chip{font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:4px 7px;border:1px solid #444;border-radius:3px;color:#bbb}.video-info h3{font-size:14px;margin:0 0 9px}.video-info p{font-size:11px;color:#999;margin:0}.video-actions{display:flex;justify-content:space-between;align-items:center;margin-top:13px}.text-btn{border:0;background:none;color:#ff7781;font-size:12px;padding:0}.progressbar{height:5px;background:#333;border-radius:5px;overflow:hidden;margin-top:8px}.progressbar span{display:block;height:100%;background:var(--red)}
     .admin-layout{display:grid;grid-template-columns:220px 1fr;gap:20px}.admin-nav{display:grid;align-content:start;gap:8px}.admin-nav button{text-align:left}.admin-nav button.active{background:#301116;border-color:#76232d;color:#ff8b94}.admin-content h2{font:34px "Bebas Neue";margin:0 0 18px}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.admin-form .wide{grid-column:1/-1}.admin-list{display:grid;gap:9px;margin-top:20px}.admin-row{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:13px;background:#0b0b0b;border:1px solid #292929;border-radius:4px}.admin-row strong{font-size:13px}.admin-row small{display:block;color:#999;margin-top:4px}.modal{position:fixed;inset:0;background:#000d;z-index:50;display:none;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.modal-box{width:min(850px,100%);max-height:92vh;overflow:auto;background:#111;border:1px solid #333;border-radius:8px}.modal-head{display:flex;justify-content:space-between;padding:17px 20px;border-bottom:1px solid #333}.player{aspect-ratio:16/9;background:#000}.player iframe,.player video{width:100%;height:100%;border:0}.modal-body{padding:22px}.modal-body h2{margin:0 0 12px}.modal-body p,.modal-body li{color:#bbb;font-size:13px;line-height:1.7}.empty{padding:50px 20px;text-align:center;border:1px dashed #444;color:#999;border-radius:6px}.hidden{display:none!important}
-    @media(max-width:850px){nav{display:none}.mobile-menu{display:block}.program-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}.admin-layout{grid-template-columns:1fr}.admin-nav{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:560px){.wrap{width:min(100% - 28px,1160px)}.topbar{height:66px;padding:0 14px}.nav-actions .btn:not(.primary){display:none}.hero{min-height:590px}.hero-content{padding:75px 0}.hero h1{font-size:67px}.stats{gap:20px}.stat strong{font-size:29px}.section-head{display:block}.section-head h2{font-size:40px}.program-grid,.video-grid,.features{grid-template-columns:1fr}.program{min-height:160px}.cta{padding:30px;display:block}.cta .btn{margin-top:20px}.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-nav{grid-template-columns:1fr 1fr}}
+    @media(max-width:850px){nav{display:none}.mobile-menu{display:block}.program-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}.admin-layout{grid-template-columns:1fr}.admin-nav{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:560px){.wrap{width:min(100% - 28px,1160px)}.topbar{height:66px;padding:0 14px}.nav-actions .btn:not(.primary){display:none}.hero{min-height:590px}.hero-content{padding:75px 0}.hero h1{font-size:67px}.stats{gap:20px}.stat strong{font-size:29px}.section-head{display:block}.section-head h2{font-size:40px}.program-grid,.video-grid,.features{grid-template-columns:1fr}.program{min-height:160px}.cta{padding:30px;display:block}.cta .btn{margin-top:20px}.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-nav{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 <body>
@@ -36,8 +36,7 @@
   <a class="brand" href="#" onclick="showView('home');return false"><span class="brandmark">V</span><span><strong>VANGUARDS <em>MMA</em></strong><small>ACADEMY</small></span></a>
   <nav><a href="#programs">DISCIPLINES</a><a href="#platform">THE PLATFORM</a><a href="#contact">CONTACT</a></nav>
   <div class="nav-actions" id="navActions">
-    <button class="btn" onclick="showAuth('login')">Member Login</button>
-    <button class="btn primary" onclick="showAuth('signup')">Join Academy</button>
+    <button class="btn primary" onclick="showAuth('login')">Member Login</button>
   </div>
   <button class="btn small mobile-menu" onclick="showView(currentUser?'dashboard':'auth')">☰</button>
 </header>
@@ -48,7 +47,7 @@
       <div class="eyebrow">● Train with purpose · Fight with intelligence</div>
       <h1>BUILT IN THE<br><span>TRAINING ROOM.</span></h1>
       <p>Build complete MMA skills through structured lessons in striking, wrestling, Brazilian Jiu-Jitsu and conditioning. Learn at the gym, then review every lesson whenever you need it.</p>
-      <div class="hero-actions"><button class="btn primary" onclick="showAuth('signup')">GET STARTED →</button><button class="btn" onclick="showAuth('login')">MEMBER LOGIN</button></div>
+      <div class="hero-actions"><button class="btn primary" onclick="showAuth('login')">MEMBER LOGIN →</button></div>
       <div class="stats"><div class="stat"><strong>4</strong><span>CORE DISCIPLINES</span></div><div class="stat"><strong>ALL LEVELS</strong><span>BEGINNER TO ADVANCED</span></div><div class="stat"><strong>24/7</strong><span>LEARN AT YOUR PACE</span></div></div>
     </div></div></section>
     <section class="programs" id="programs"><div class="wrap"><div class="section-head"><div><div class="eyebrow">THE CURRICULUM</div><h2>ONE FIGHT GAME. FOUR DISCIPLINES.</h2></div><p>Develop the skills individually, understand how they connect, and build a complete MMA game through consistent practice.</p></div>
@@ -62,20 +61,24 @@
     <section id="platform"><div class="wrap"><div class="section-head"><div><div class="eyebrow">THE MEMBER PLATFORM</div><h2>YOUR TRAINING. ORGANIZED.</h2></div></div>
       <div class="features"><article class="feature"><div class="eyebrow">01 / VIDEO LIBRARY</div><h3>Lessons you can revisit</h3><p>Browse your academy's video lessons by discipline and skill level. Open a lesson to review its breakdown and coaching notes.</p></article><article class="feature"><div class="eyebrow">02 / PROGRESS</div><h3>Keep track of your work</h3><p>Mark lessons as completed and keep your progress connected to your account across devices.</p></article><article class="feature"><div class="eyebrow">03 / COACHING</div><h3>Coach-managed content</h3><p>Your academy administrator can publish new lessons and update the library without changing website code.</p></article></div>
     </div></section>
-    <section id="contact" style="padding-top:0"><div class="wrap"><div class="cta"><div><h2>READY TO PUT IN THE WORK?</h2><p>Create your member account and access the academy's training library.</p></div><button class="btn" onclick="showAuth('signup')">JOIN THE ACADEMY →</button></div></div></section>
+    <section id="contact" style="padding-top:0"><div class="wrap"><div class="cta"><div><h2>READY TO PUT IN THE WORK?</h2><p>Student accounts are created and managed by the academy administrator.</p></div><button class="btn" onclick="showAuth('login')">MEMBER LOGIN →</button></div></div></section>
   </div>
 
   <section class="app-view" id="authView"><div class="wrap"><div class="panel auth-wrap">
     <div class="eyebrow">MEMBER ACCESS</div><h1 style="font:42px 'Bebas Neue';margin:8px 0 4px" id="authTitle">WELCOME BACK</h1><p class="muted" id="authSubtitle" style="font-size:13px">Sign in to access your training library.</p>
-    <div class="tabs"><button class="btn active" id="loginTab" onclick="showAuth('login')">Log in</button><button class="btn" id="signupTab" onclick="showAuth('signup')">Create account</button></div>
     <div id="authMessage"></div>
     <form id="authForm">
-      <div class="field hidden" id="nameField"><label>FULL NAME</label><input id="fullName" autocomplete="name" placeholder="Your name"></div>
       <div class="field"><label>EMAIL ADDRESS</label><input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
-      <div class="field"><label>PASSWORD</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters"></div>
+      <div class="field"><label>PASSWORD</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="Your password"></div>
       <button class="btn primary" style="width:100%;margin-top:10px" id="authSubmit">LOG IN</button>
     </form>
-    <p class="muted" style="font-size:11px;margin-top:18px">Accounts are securely managed by Firebase Authentication.</p>
+    <p class="muted" style="font-size:11px;margin-top:18px">Your academy administrator creates and manages student accounts.</p>
+  </div></div></section>
+
+  <section class="app-view" id="lockedView"><div class="wrap"><div class="panel auth-wrap" style="text-align:center">
+    <div class="eyebrow">MEMBERSHIP ACCESS</div><h1 style="font:42px 'Bebas Neue';margin:8px 0 4px">ACCESS PAUSED</h1>
+    <p id="lockedMessage" class="muted" style="font-size:13px;line-height:1.8">Your membership is expired or has been locked by the academy administrator. Contact your coach to restore access.</p>
+    <button class="btn primary" onclick="logout()">LOG OUT</button>
   </div></div></section>
 
   <section class="app-view" id="dashboardView"><div class="wrap">
@@ -88,7 +91,7 @@
   <section class="app-view" id="adminView"><div class="wrap">
     <div class="dashboard-top"><div><div class="eyebrow">ACADEMY MANAGEMENT</div><h1>ADMIN CONTROL PANEL</h1><div class="muted" style="font-size:13px">Manage the content displayed in your members' library.</div></div><button class="btn" onclick="showView('dashboard')">← BACK TO LIBRARY</button></div>
     <div class="admin-layout">
-      <aside class="panel admin-nav"><button class="btn active" onclick="adminTab('videos',this)">Video library</button><button class="btn" onclick="adminTab('add',this)">Add a video</button><button class="btn" onclick="adminTab('help',this)">Upload guide</button></aside>
+      <aside class="panel admin-nav"><button class="btn active" onclick="adminTab('videos',this)">Video library</button><button class="btn" onclick="adminTab('add',this)">Add a video</button><button class="btn" onclick="adminTab('students',this)">Students</button><button class="btn" onclick="adminTab('help',this)">Upload guide</button></aside>
       <div class="panel admin-content" id="adminContent"></div>
     </div>
   </div></section>
@@ -109,69 +112,104 @@ const firebaseConfig = {
 const ADMIN_UIDS = ["OMlV6SD2ORN5DJptoUObSQaSjIx2"];
 /* ===================================================================================== */
 
-let auth=null, db=null, currentUser=null, userProfile=null, videos=[], completedIds=new Set(), authMode="login", activeAdminTab="videos", editingVideoId=null;
+let auth=null, db=null, currentUser=null, userProfile=null, videos=[], completedIds=new Set(), activeAdminTab="videos", editingVideoId=null, profileUnsubscribe=null, membershipExpiryTimer=null;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const isConfigured = () => Boolean(
-    firebaseConfig.apiKey &&
-    firebaseConfig.authDomain &&
-    firebaseConfig.projectId &&
-    firebaseConfig.appId
-);
-function message(id,text,ok=false){$(id).innerHTML=text?`<div class="notice ${ok?'success':''}">${esc(text)}</div>`:"";}
+const isConfigured=()=>Boolean(firebaseConfig.apiKey && firebaseConfig.authDomain && firebaseConfig.projectId && firebaseConfig.appId);
+function message(id,text,ok=false){const el=$(id);if(el)el.innerHTML=text?`<div class="notice ${ok?'success':''}">${esc(text)}</div>`:"";}
 function isAdmin(){return !!currentUser && ADMIN_UIDS.includes(currentUser.uid);}
-function initFirebase(){
-  if(!isConfigured()){console.warn("Firebase is not configured yet.");return false;}
-  firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
-  auth.onAuthStateChanged(async user=>{
-    currentUser=user;userProfile=null;
-    if(user){try{const snap=await db.collection("users").doc(user.uid).get();userProfile=snap.exists?snap.data():{};await loadProgress();await loadVideos();showView("dashboard");}catch(e){console.error(e);showView("dashboard");}}
+function timestampDate(value){return value && typeof value.toDate==="function" ? value.toDate() : null;}
+function isMembershipActive(profile){const expiry=timestampDate(profile?.expiresAt);return profile?.role==="student" && profile?.status==="active" && !!expiry && expiry.getTime()>Date.now();}
+function membershipState(profile){if(profile?.status==="locked")return "Locked";return isMembershipActive(profile)?"Active":"Expired";}
+function formatDate(value){const d=timestampDate(value);return d?d.toLocaleString(undefined,{year:"numeric",month:"short",day:"numeric"}):"Not set";}
+function stopMembershipWatch(){
+  if(profileUnsubscribe){profileUnsubscribe();profileUnsubscribe=null;}
+  if(membershipExpiryTimer){clearTimeout(membershipExpiryTimer);membershipExpiryTimer=null;}
+}
+function showLockedState(){
+  videos=[];completedIds.clear();
+  if($("videoModal").classList.contains("open"))closeVideo();
+  const expiry=formatDate(userProfile?.expiresAt);
+  $("lockedMessage").textContent=userProfile?.status==="locked"
+    ? "Your account has been locked by the academy administrator. Contact your coach to restore access."
+    : userProfile?.expiresAt
+      ? `Your membership expired or is not active. Expiry date: ${expiry}. Contact your coach to renew access.`
+      : "This account does not have an active student membership. Contact the academy administrator.";
+  showView("locked");updateNav();
+}
+function scheduleMembershipExpiry(){
+  if(membershipExpiryTimer){clearTimeout(membershipExpiryTimer);membershipExpiryTimer=null;}
+  if(!currentUser||isAdmin())return;
+  const expiry=timestampDate(userProfile?.expiresAt);
+  if(!expiry)return;
+  const remaining=expiry.getTime()-Date.now();
+  if(remaining<=0){showLockedState();return;}
+  membershipExpiryTimer=setTimeout(()=>{
+    if(expiry.getTime()<=Date.now())showLockedState();
+    else scheduleMembershipExpiry();
+  },Math.min(remaining,2147480000));
+}
+async function applyMembershipSnapshot(snap){
+  userProfile=snap.exists?snap.data():null;
+  if(isAdmin()||isMembershipActive(userProfile)){
+    scheduleMembershipExpiry();
+    await loadProgress();await loadVideos();
+    if(!$('adminView').classList.contains('active') && !$('dashboardView').classList.contains('active'))showView('dashboard');
+    else renderVideos();
     updateNav();
+  }else{
+    if(membershipExpiryTimer){clearTimeout(membershipExpiryTimer);membershipExpiryTimer=null;}
+    showLockedState();
+  }
+}
+function initFirebase(){
+  if(!isConfigured()){console.warn("Firebase configuration is incomplete.");return false;}
+  if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
+  auth=firebase.auth();db=firebase.firestore();
+  auth.onAuthStateChanged(user=>{
+    stopMembershipWatch();currentUser=user;userProfile=null;videos=[];completedIds.clear();
+    if(user){
+      profileUnsubscribe=db.collection("users").doc(user.uid).onSnapshot(
+        snap=>{applyMembershipSnapshot(snap).catch(e=>{console.error("Account loading failed:",e);if(!isAdmin())showLockedState();});},
+        err=>{console.error("Membership profile listener failed:",err);if(!isAdmin())showLockedState();}
+      );
+    }else{showView("home");updateNav();}
   });
   return true;
 }
 function updateNav(){
-  $("navActions").innerHTML=currentUser?`<span class="muted" style="font-size:12px">${esc(userProfile?.name||currentUser.email)}</span><button class="btn primary" onclick="showView('dashboard')">MY LIBRARY</button>`:`<button class="btn" onclick="showAuth('login')">Member Login</button><button class="btn primary" onclick="showAuth('signup')">Join Academy</button>`;
+  $("navActions").innerHTML=currentUser
+    ? `<span class="muted" style="font-size:12px">${esc(userProfile?.name||currentUser.email)}</span>${(isAdmin()||isMembershipActive(userProfile))?'<button class="btn primary" onclick="showView(\'dashboard\')">MY LIBRARY</button>':''}<button class="btn" onclick="logout()">LOG OUT</button>`
+    : `<button class="btn primary" onclick="showAuth('login')">Member Login</button>`;
 }
 function showView(name){
   $("homeView").style.display=name==="home"?"block":"none";
-  ["auth","dashboard","admin"].forEach(v=>{$(v+"View").classList.toggle("active",name===v);});
+  ["auth","dashboard","admin","locked"].forEach(v=>$(v+"View").classList.toggle("active",name===v));
   window.scrollTo({top:0,behavior:"smooth"});
   if(name==="admin"){if(!isAdmin()){showView("dashboard");return;}renderAdmin();}
-  if(name==="dashboard"&&currentUser){renderVideos();}
+  if(name==="dashboard"&&currentUser&&(isAdmin()||isMembershipActive(userProfile)))renderVideos();
 }
-function showAuth(mode){
-  authMode=mode;showView("auth");
-  $("authTitle").textContent=mode==="signup"?"CREATE YOUR ACCOUNT":"WELCOME BACK";
-  $("authSubtitle").textContent=mode==="signup"?"Register to access your academy training library.":"Sign in to access your training library.";
-  $("nameField").classList.toggle("hidden",mode!=="signup");
-  $("fullName").required=mode==="signup";
-  $("loginTab").classList.toggle("active",mode==="login");$("signupTab").classList.toggle("active",mode==="signup");
-  $("authSubmit").textContent=mode==="signup"?"CREATE ACCOUNT":"LOG IN";message("authMessage","");
-}
+function showAuth(){showView("auth");$("authTitle").textContent="MEMBER LOGIN";$("authSubtitle").textContent="Sign in with the account provided by your academy administrator.";message("authMessage","");}
 $("authForm").addEventListener("submit",async e=>{
-  e.preventDefault();if(!isConfigured()){message("authMessage","Firebase is not configured. Follow the setup guide in README.md.");return;}
-  const email=$("email").value.trim(),password=$("password").value,name=$("fullName").value.trim();
+  e.preventDefault();if(!isConfigured()){message("authMessage","Firebase configuration is incomplete.");return;}
+  const email=$("email").value.trim(),password=$("password").value;
   $("authSubmit").disabled=true;$("authSubmit").textContent="PLEASE WAIT...";
-  try{
-    if(authMode==="signup"){
-      if(!name)throw new Error("Enter your full name.");
-      const cred=await auth.createUserWithEmailAndPassword(email,password);
-      await db.collection("users").doc(cred.user.uid).set({name,email,role:"student",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-    }else{await auth.signInWithEmailAndPassword(email,password);}
-  }catch(err){message("authMessage",friendlyError(err));}
-  finally{$("authSubmit").disabled=false;$("authSubmit").textContent=authMode==="signup"?"CREATE ACCOUNT":"LOG IN";}
+  try{await auth.signInWithEmailAndPassword(email,password);}
+  catch(err){message("authMessage",friendlyError(err));}
+  finally{$("authSubmit").disabled=false;$("authSubmit").textContent="LOG IN";}
 });
 function friendlyError(e){const map={"auth/email-already-in-use":"This email is already registered.","auth/invalid-email":"Enter a valid email address.","auth/weak-password":"Use a password with at least 6 characters.","auth/user-not-found":"No account was found with this email.","auth/wrong-password":"Incorrect email or password.","auth/invalid-credential":"Incorrect email or password.","auth/too-many-requests":"Too many attempts. Try again later."};return map[e.code]||e.message||"Something went wrong.";}
-async function logout(){if(auth)await auth.signOut();currentUser=null;userProfile=null;videos=[];completedIds.clear();updateNav();showView("home");}
+async function logout(){stopMembershipWatch();if(auth)await auth.signOut();currentUser=null;userProfile=null;videos=[];completedIds.clear();updateNav();showView("home");}
 async function loadVideos(){
-  if(!db)return;const snap=await db.collection("videos").orderBy("createdAt","desc").get();videos=snap.docs.map(d=>({id:d.id,...d.data()}));renderVideos();
+  if(!db||!currentUser||(!isAdmin()&&!isMembershipActive(userProfile)))return;
+  const snap=await db.collection("videos").orderBy("createdAt","desc").get();videos=snap.docs.map(d=>({id:d.id,...d.data()}));renderVideos();
 }
 async function loadProgress(){
-  if(!db||!currentUser)return;const snap=await db.collection("users").doc(currentUser.uid).collection("progress").get();completedIds=new Set(snap.docs.map(d=>d.id));
+  if(!db||!currentUser||(!isAdmin()&&!isMembershipActive(userProfile)))return;
+  const snap=await db.collection("users").doc(currentUser.uid).collection("progress").get();completedIds=new Set(snap.docs.map(d=>d.id));
 }
 function renderVideos(){
-  if(!currentUser)return;
+  if(!currentUser||(!isAdmin()&&!isMembershipActive(userProfile)))return;
   $("welcomeText").textContent=`Welcome back, ${userProfile?.name||currentUser.email}.`;
   $("adminShortcut").classList.toggle("hidden",!isAdmin());
   const count=videos.length,done=completedIds.size,pct=count?Math.round(done/count*100):0;
@@ -203,7 +241,7 @@ function openVideo(id){
 }
 function closeVideo(){$("videoModal").classList.remove("open");$("videoPlayer").innerHTML="";}
 async function toggleComplete(id){
-  if(!currentUser||!db)return;const ref=db.collection("users").doc(currentUser.uid).collection("progress").doc(id);
+  if(!currentUser||!db||(!isAdmin()&&!isMembershipActive(userProfile)))return;const ref=db.collection("users").doc(currentUser.uid).collection("progress").doc(id);
   try{if(completedIds.has(id)){await ref.delete();completedIds.delete(id);}else{await ref.set({completedAt:firebase.firestore.FieldValue.serverTimestamp()});completedIds.add(id);}renderVideos();openVideo(id);}catch(e){alert("Could not save progress: "+e.message);}
 }
 function adminTab(tab,btn){activeAdminTab=tab;document.querySelectorAll(".admin-nav button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");renderAdmin();}
@@ -226,9 +264,89 @@ function renderAdmin(){
       <div class="wide" style="display:flex;gap:9px;flex-wrap:wrap;margin-top:10px"><button class="btn primary" id="saveVideoBtn">${editingVideoId?"SAVE CHANGES":"PUBLISH VIDEO"}</button><button type="button" class="btn" onclick="editingVideoId=null;adminTab('videos',document.querySelectorAll('.admin-nav button')[0])">CANCEL</button></div>
     </form>`;
     $("videoForm").addEventListener("submit",saveVideo);
+  }else if(activeAdminTab==="students"){
+    renderStudents();
   }else{
     c.innerHTML=`<h2>HOW TO ADD YOUR TRAINING VIDEOS</h2><ol style="color:#bbb;font-size:13px;line-height:2;padding-left:20px"><li>Upload your video to YouTube (recommended) or Vimeo.</li><li>For members-only lessons, set YouTube visibility to <b>Unlisted</b>. Anyone with the link can still share it, so do not treat unlisted as DRM.</li><li>Copy the video's normal share link, such as <code>https://youtu.be/VIDEO_ID</code>.</li><li>Open <b>Add a video</b>, fill in its title, category, level and video link.</li><li>Add a thumbnail URL if you have one, then click <b>Publish Video</b>.</li><li>The lesson will appear in the student library after publishing.</li></ol><div class="notice">Do not upload large video files to your GitHub repository. GitHub Pages is for website files, not video hosting. For direct in-site uploads, a cloud video/storage service and additional setup are required.</div>`;
   }
+}
+async function renderStudents(){
+  if(!isAdmin())return;
+  const c=$("adminContent");
+  c.innerHTML=`<h2>STUDENT ACCOUNTS</h2>
+    <p class="muted" style="font-size:12px;line-height:1.7">Create student logins and manage 30-day memberships. Expired and manually locked accounts cannot access the video library.</p>
+    <div id="studentMessage"></div>
+    <form id="studentForm" class="admin-form">
+      <div class="field"><label>STUDENT FULL NAME *</label><input id="studentName" required placeholder="Student name"></div>
+      <div class="field"><label>EMAIL ADDRESS *</label><input id="studentEmail" type="email" required placeholder="student@example.com"></div>
+      <div class="field"><label>TEMPORARY PASSWORD *</label><input id="studentPassword" type="password" required minlength="6" placeholder="At least 6 characters"></div>
+      <div class="field"><label>MEMBERSHIP LENGTH (DAYS)</label><input id="studentDays" type="number" min="1" max="3650" value="30" required></div>
+      <div class="wide"><button class="btn primary" id="createStudentBtn">CREATE STUDENT ACCOUNT</button></div>
+    </form>
+    <div class="divider" style="height:1px;background:#333;margin:24px 0"></div>
+    <div class="dashboard-top"><h2 style="margin:0">CURRENT STUDENTS</h2><button class="btn small" onclick="renderStudents()">REFRESH LIST</button></div>
+    <div id="studentList" class="admin-list"><div class="empty">Loading students...</div></div>`;
+  $("studentForm").addEventListener("submit",createStudent);
+  try{
+    const snap=await db.collection("users").where("role","==","student").get();
+    const students=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>{
+      const da=timestampDate(a.createdAt)?.getTime()||0,dbb=timestampDate(b.createdAt)?.getTime()||0;return dbb-da;
+    });
+    $("studentList").innerHTML=students.length?students.map(s=>{
+      const state=membershipState(s),expiry=formatDate(s.expiresAt);
+      const action=state==="Active"
+        ? `<button class="btn small ghost-red" onclick="setStudentAccess('${s.id}','lock')">LOCK</button><button class="btn small" onclick="setStudentAccess('${s.id}','renew')">RENEW 30 DAYS</button>`
+        : `<button class="btn small primary" onclick="setStudentAccess('${s.id}','unlock')">UNLOCK + 30 DAYS</button>`;
+      return `<div class="admin-row"><div style="min-width:0"><strong>${esc(s.name||"Unnamed student")}</strong><small>${esc(s.email||"")}</small><small>Status: <b>${state}</b> · Expires: ${expiry}</small></div><div style="display:flex;gap:7px;flex-wrap:wrap">${action}</div></div>`;
+    }).join(""):`<div class="empty">No student profiles found. Create the first student account above.</div>`;
+  }catch(err){$("studentList").innerHTML=`<div class="notice">Could not load students: ${esc(err.message)}</div>`;}
+}
+async function createStudent(e){
+  e.preventDefault();
+  if(!isAdmin()){message("studentMessage","Only the administrator can create student accounts.");return;}
+  const name=$("studentName").value.trim(),email=$("studentEmail").value.trim().toLowerCase(),password=$("studentPassword").value,days=Number($("studentDays").value);
+  if(!name||!email||password.length<6||!Number.isInteger(days)||days<1||days>3650){message("studentMessage","Check the student details. Membership must be between 1 and 3650 days.");return;}
+  const btn=$("createStudentBtn");btn.disabled=true;btn.textContent="CREATING ACCOUNT...";
+  let secondaryApp=null,secondaryAuth=null,createdUser=null;
+  try{
+    try{secondaryApp=firebase.app("VanguardsStudentCreator");}
+    catch{secondaryApp=firebase.initializeApp(firebaseConfig,"VanguardsStudentCreator");}
+    secondaryAuth=secondaryApp.auth();
+    const credential=await secondaryAuth.createUserWithEmailAndPassword(email,password);
+    createdUser=credential.user;
+    const expiry=new Date(Date.now()+days*24*60*60*1000);
+    await db.collection("users").doc(createdUser.uid).set({
+      name,email,role:"student",status:"active",
+      createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+      expiresAt:firebase.firestore.Timestamp.fromDate(expiry),
+      createdBy:currentUser.uid,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    await secondaryAuth.signOut();await secondaryApp.delete();secondaryApp=null;
+    $("studentForm").reset();$("studentDays").value="30";
+    await renderStudents();
+    message("studentMessage",`Student account created. Access expires on ${expiry.toLocaleDateString()}.`,true);
+  }catch(err){
+    if(createdUser){try{await createdUser.delete();}catch(cleanupError){console.error("Could not remove incomplete auth user:",cleanupError);}}
+    if(secondaryAuth){try{await secondaryAuth.signOut();}catch(_){}}
+    if(secondaryApp){try{await secondaryApp.delete();}catch(_){}}
+    message("studentMessage",friendlyError(err));
+  }finally{
+    const current=$("createStudentBtn");if(current){current.disabled=false;current.textContent="CREATE STUDENT ACCOUNT";}
+  }
+}
+async function setStudentAccess(uid,action){
+  if(!isAdmin())return;
+  const ref=db.collection("users").doc(uid);
+  try{
+    if(action==="lock"){
+      await ref.update({status:"locked",lockedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+    }else{
+      const expiry=new Date(Date.now()+30*24*60*60*1000);
+      await ref.update({status:"active",expiresAt:firebase.firestore.Timestamp.fromDate(expiry),unlockedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+    }
+    await renderStudents();
+  }catch(err){message("studentMessage","Could not update this student: "+err.message);}
 }
 function editVideo(id){editingVideoId=id;adminTab("add",document.querySelectorAll(".admin-nav button")[1]);}
 async function saveVideo(e){
@@ -250,7 +368,7 @@ $("year").textContent=new Date().getFullYear();
 if(!initFirebase()){
   // Show a clear setup notice instead of pretending that demo authentication works.
   const n=document.createElement("div");n.className="notice";n.style.cssText="position:fixed;bottom:12px;left:12px;right:12px;z-index:100;max-width:850px;margin:auto";
-  n.innerHTML="SETUP REQUIRED: connect your Firebase project in <b>index.html</b> before using login, signup or the video library. See <b>README.md</b>.";document.body.appendChild(n);
+  n.innerHTML="SETUP REQUIRED: complete your Firebase project configuration in <b>index.html</b> before using member login or the video library. See <b>README.md</b>.";document.body.appendChild(n);
 }
 </script>
 </body>
