@@ -112,7 +112,12 @@ const ADMIN_UIDS = ["OMlV6SD2ORN5DJptoUObSQaSjIx2"];
 let auth=null, db=null, currentUser=null, userProfile=null, videos=[], completedIds=new Set(), authMode="login", activeAdminTab="videos", editingVideoId=null;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const isConfigured=()=>firebaseConfig.apiKey!=="AIzaSyA6b2guPogM3PwBaRB-6myJbuAeBrlCqNQ" && firebaseConfig.projectId!=="vanguards-b24da";
+const isConfigured = () => Boolean(
+    firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.projectId &&
+    firebaseConfig.appId
+);
 function message(id,text,ok=false){$(id).innerHTML=text?`<div class="notice ${ok?'success':''}">${esc(text)}</div>`:"";}
 function isAdmin(){return !!currentUser && ADMIN_UIDS.includes(currentUser.uid);}
 function initFirebase(){
