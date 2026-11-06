@@ -1,785 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vanguards MMA Academy</title>
-<link rel="icon" href="data:," />
-<script src="https://cdn.tailwindcss.com"></script>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
-    "react/jsx-dev-runtime": "https://esm.sh/react@18.3.1/jsx-dev-runtime",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-    "lucide-react": "https://esm.sh/lucide-react@0.383.0?external=react"
-  }
-}
-</script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
-  html, body { background:#000; margin:0; padding:0; }
-  * { font-family: 'Inter', sans-serif; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090909" />
+  <meta name="description" content="Vanguards MMA Academy — train smarter with structured MMA, striking, grappling and conditioning lessons." />
+  <title>Vanguards MMA Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <style>
+    :root{--bg:#090909;--panel:#111;--panel2:#171717;--line:#292929;--muted:#9b9b9b;--red:#e32636;--red2:#b91625;--white:#f7f7f7;--green:#36c98b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:#090909ed;backdrop-filter:blur(14px);z-index:20;padding:0 max(20px,calc((100vw - 1160px)/2))}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.06em}.brandmark{width:40px;height:40px;background:var(--red);display:grid;place-items:center;clip-path:polygon(50% 0,100% 25%,85% 85%,50% 100%,15% 85%,0 25%);font-size:21px;color:#080808}.brand small{display:block;font-size:9px;letter-spacing:.34em;color:#999;margin-top:3px}.brand strong{font-family:"Bebas Neue";font-size:25px;font-weight:400}.brand em{font-style:normal;color:var(--red)}
+    nav{display:flex;align-items:center;gap:28px;color:#bbb;font-size:13px}nav a:hover{color:white}.nav-actions{display:flex;align-items:center;gap:10px}.btn{border:1px solid var(--line);background:transparent;color:white;padding:11px 17px;border-radius:4px;font-size:13px;font-weight:700;transition:.2s}.btn:hover{border-color:#777;transform:translateY(-1px)}.btn.primary{background:var(--red);border-color:var(--red)}.btn.primary:hover{background:#f03444}.btn.ghost-red{border-color:#6d2028;color:#ff7b85}.btn.small{padding:8px 12px;font-size:12px}.mobile-menu{display:none}
+    .hero{min-height:610px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,#090909 5%,#090909ed 42%,#09090955 100%),url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=2000&q=85") center/cover}
+    .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg),transparent 25%,transparent 80%,var(--bg));pointer-events:none}.hero-content{position:relative;z-index:1;padding:100px 0;max-width:720px}.eyebrow{color:#ff6571;font-size:11px;font-weight:800;letter-spacing:.25em;text-transform:uppercase}.hero h1{font:clamp(64px,9vw,112px)/.88 "Bebas Neue";margin:22px 0 18px;letter-spacing:.01em}.hero h1 span{color:var(--red)}.hero p{color:#c2c2c2;line-height:1.8;max-width:560px;font-size:16px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.stats{display:flex;gap:42px;margin-top:54px}.stat strong{font:36px "Bebas Neue";display:block}.stat span{font-size:11px;color:#999;letter-spacing:.08em}
+    section{padding:82px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}.section-head h2{font:48px/.95 "Bebas Neue";margin:8px 0 0}.section-head p{max-width:430px;color:var(--muted);font-size:13px;line-height:1.7}.programs{background:#101010;border-block:1px solid var(--line)}.program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.program{background:linear-gradient(145deg,#1b1b1b,#101010);border:1px solid #292929;padding:24px;min-height:205px;border-radius:6px}.program .symbol{font-size:25px;color:var(--red)}.program h3{font-size:16px;margin:20px 0 9px}.program p{font-size:12px;line-height:1.7;color:#999;margin:0}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.feature{border-top:2px solid var(--red);padding-top:20px}.feature h3{font-size:16px}.feature p{font-size:13px;color:var(--muted);line-height:1.8}
+    .cta{background:linear-gradient(110deg,#8d101b,#df2636);padding:54px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:25px}.cta h2{font:45px "Bebas Neue";margin:0}.cta p{color:#ffe0e2;margin:7px 0 0;font-size:13px}.cta .btn{background:#090909;border-color:#090909}
+    footer{border-top:1px solid var(--line);padding:35px 0;color:#888;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .app-view{display:none;min-height:70vh;padding:42px 0 80px}.app-view.active{display:block}.panel{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:24px}.auth-wrap{max-width:460px;margin:35px auto}.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:12px;color:#bbb;font-weight:700}.field input,.field textarea,.field select{width:100%;background:#090909;border:1px solid #333;color:white;border-radius:4px;padding:12px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--red)}.field textarea{min-height:85px;resize:vertical}.muted{color:var(--muted)}.notice{padding:12px 14px;border-radius:4px;background:#201316;border:1px solid #5c2029;color:#ffabb1;font-size:13px;margin:14px 0}.success{background:#10231c;border-color:#245c43;color:#9ce8c4}.tabs{display:flex;gap:8px;margin-bottom:20px}.tabs button.active{background:var(--red);border-color:var(--red);color:white}
+    .dashboard-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:25px}.dashboard-top h1{font:42px "Bebas Neue";margin:5px 0}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.toolbar input,.toolbar select{background:#111;border:1px solid #333;color:white;padding:10px;border-radius:4px}.toolbar input{flex:1;min-width:180px}.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.video-card{background:#121212;border:1px solid #292929;border-radius:6px;overflow:hidden;cursor:pointer;transition:.2s}.video-card:hover{transform:translateY(-3px);border-color:#81313a}.thumb{aspect-ratio:16/9;background:#222;position:relative;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.thumb .play{position:absolute;inset:0;display:grid;place-items:center;background:#0004;font-size:38px;text-shadow:0 2px 12px #000}.video-info{padding:15px}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px}.chip{font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:4px 7px;border:1px solid #444;border-radius:3px;color:#bbb}.video-info h3{font-size:14px;margin:0 0 9px}.video-info p{font-size:11px;color:#999;margin:0}.video-actions{display:flex;justify-content:space-between;align-items:center;margin-top:13px}.text-btn{border:0;background:none;color:#ff7781;font-size:12px;padding:0}.progressbar{height:5px;background:#333;border-radius:5px;overflow:hidden;margin-top:8px}.progressbar span{display:block;height:100%;background:var(--red)}
+    .admin-layout{display:grid;grid-template-columns:220px 1fr;gap:20px}.admin-nav{display:grid;align-content:start;gap:8px}.admin-nav button{text-align:left}.admin-nav button.active{background:#301116;border-color:#76232d;color:#ff8b94}.admin-content h2{font:34px "Bebas Neue";margin:0 0 18px}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.admin-form .wide{grid-column:1/-1}.admin-list{display:grid;gap:9px;margin-top:20px}.admin-row{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:13px;background:#0b0b0b;border:1px solid #292929;border-radius:4px}.admin-row strong{font-size:13px}.admin-row small{display:block;color:#999;margin-top:4px}.modal{position:fixed;inset:0;background:#000d;z-index:50;display:none;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.modal-box{width:min(850px,100%);max-height:92vh;overflow:auto;background:#111;border:1px solid #333;border-radius:8px}.modal-head{display:flex;justify-content:space-between;padding:17px 20px;border-bottom:1px solid #333}.player{aspect-ratio:16/9;background:#000}.player iframe,.player video{width:100%;height:100%;border:0}.modal-body{padding:22px}.modal-body h2{margin:0 0 12px}.modal-body p,.modal-body li{color:#bbb;font-size:13px;line-height:1.7}.empty{padding:50px 20px;text-align:center;border:1px dashed #444;color:#999;border-radius:6px}.hidden{display:none!important}
+    @media(max-width:850px){nav{display:none}.mobile-menu{display:block}.program-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}.admin-layout{grid-template-columns:1fr}.admin-nav{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:560px){.wrap{width:min(100% - 28px,1160px)}.topbar{height:66px;padding:0 14px}.nav-actions .btn:not(.primary){display:none}.hero{min-height:590px}.hero-content{padding:75px 0}.hero h1{font-size:67px}.stats{gap:20px}.stat strong{font-size:29px}.section-head{display:block}.section-head h2{font-size:40px}.program-grid,.video-grid,.features{grid-template-columns:1fr}.program{min-height:160px}.cta{padding:30px;display:block}.cta .btn{margin-top:20px}.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-nav{grid-template-columns:1fr 1fr}}
+  </style>
 </head>
 <body>
-<div id="root"></div>
+<header class="topbar">
+  <a class="brand" href="#" onclick="showView('home');return false"><span class="brandmark">V</span><span><strong>VANGUARDS <em>MMA</em></strong><small>ACADEMY</small></span></a>
+  <nav><a href="#programs">DISCIPLINES</a><a href="#platform">THE PLATFORM</a><a href="#contact">CONTACT</a></nav>
+  <div class="nav-actions" id="navActions">
+    <button class="btn" onclick="showAuth('login')">Member Login</button>
+    <button class="btn primary" onclick="showAuth('signup')">Join Academy</button>
+  </div>
+  <button class="btn small mobile-menu" onclick="showView(currentUser?'dashboard':'auth')">☰</button>
+</header>
 
-<script type="text/babel" data-type="module" data-presets="react">
-import React, { useState, useEffect, useContext, createContext, useMemo } from "react";
-import { createRoot } from "react-dom/client";
-import {
-  Swords, Dumbbell, Users, Flame, Play, X, Menu, LogOut, User, Mail, Lock,
-  Eye, EyeOff, CheckCircle2, Circle, Clock, Filter, Search, ChevronRight,
-  Instagram, Youtube, Twitter, MapPin, AlertCircle, ArrowRight, Award,
-  TrendingUp, Video, ShieldCheck, Loader2, Target, RotateCcw, Zap, Plus
-} from "lucide-react";
+<main>
+  <div id="homeView">
+    <section class="hero"><div class="wrap"><div class="hero-content">
+      <div class="eyebrow">● Train with purpose · Fight with intelligence</div>
+      <h1>BUILT IN THE<br><span>TRAINING ROOM.</span></h1>
+      <p>Build complete MMA skills through structured lessons in striking, wrestling, Brazilian Jiu-Jitsu and conditioning. Learn at the gym, then review every lesson whenever you need it.</p>
+      <div class="hero-actions"><button class="btn primary" onclick="showAuth('signup')">GET STARTED →</button><button class="btn" onclick="showAuth('login')">MEMBER LOGIN</button></div>
+      <div class="stats"><div class="stat"><strong>4</strong><span>CORE DISCIPLINES</span></div><div class="stat"><strong>ALL LEVELS</strong><span>BEGINNER TO ADVANCED</span></div><div class="stat"><strong>24/7</strong><span>LEARN AT YOUR PACE</span></div></div>
+    </div></div></section>
+    <section class="programs" id="programs"><div class="wrap"><div class="section-head"><div><div class="eyebrow">THE CURRICULUM</div><h2>ONE FIGHT GAME. FOUR DISCIPLINES.</h2></div><p>Develop the skills individually, understand how they connect, and build a complete MMA game through consistent practice.</p></div>
+      <div class="program-grid">
+        <article class="program"><div class="symbol">✦</div><h3>Striking & Kickboxing</h3><p>Boxing combinations, kicks, knees, elbows, distance management and defensive movement.</p></article>
+        <article class="program"><div class="symbol">◈</div><h3>Brazilian Jiu-Jitsu</h3><p>Position, guard work, escapes, transitions, submissions and positional control.</p></article>
+        <article class="program"><div class="symbol">⌁</div><h3>Wrestling & Grappling</h3><p>Takedown entries, sprawls, cage wrestling, chain wrestling and scrambles.</p></article>
+        <article class="program"><div class="symbol">⚔</div><h3>MMA Integration</h3><p>Combine striking, takedowns and ground control into connected fight scenarios.</p></article>
+      </div>
+    </div></section>
+    <section id="platform"><div class="wrap"><div class="section-head"><div><div class="eyebrow">THE MEMBER PLATFORM</div><h2>YOUR TRAINING. ORGANIZED.</h2></div></div>
+      <div class="features"><article class="feature"><div class="eyebrow">01 / VIDEO LIBRARY</div><h3>Lessons you can revisit</h3><p>Browse your academy's video lessons by discipline and skill level. Open a lesson to review its breakdown and coaching notes.</p></article><article class="feature"><div class="eyebrow">02 / PROGRESS</div><h3>Keep track of your work</h3><p>Mark lessons as completed and keep your progress connected to your account across devices.</p></article><article class="feature"><div class="eyebrow">03 / COACHING</div><h3>Coach-managed content</h3><p>Your academy administrator can publish new lessons and update the library without changing website code.</p></article></div>
+    </div></section>
+    <section id="contact" style="padding-top:0"><div class="wrap"><div class="cta"><div><h2>READY TO PUT IN THE WORK?</h2><p>Create your member account and access the academy's training library.</p></div><button class="btn" onclick="showAuth('signup')">JOIN THE ACADEMY →</button></div></div></section>
+  </div>
 
-/* =========================================================================
-   INITIAL VIDEO LIBRARY & HELPER
-========================================================================= */
-const INITIAL_VIDEOS = [
-  {
-    id: "v1", title: "Jab-Cross-Hook Combinations", category: "Striking", level: "Beginner",
-    duration: "12:34", videoUrl: "https://www.youtube.com/embed/M7lc1UVf-VE",
-    description: "The foundational three-punch combination every striker builds around. This session breaks down hip rotation, hand return speed, and how to chain the hook off a committed cross without dropping your guard.",
-    takeaways: ["Keep your chin tucked behind your lead shoulder on the jab", "Rotate the hip fully before the hook lands", "Reset your hands to guard after every combo, no exceptions"],
-    drills: "5 rounds x 2 minutes on the pads, 30 seconds rest between rounds"
-  },
-  {
-    id: "v2", title: "Low Kick Setups & Checks", category: "Striking", level: "Intermediate",
-    duration: "15:10", videoUrl: "https://www.youtube.com/embed/M7lc1UVf-VE",
-    description: "How to disguise a low kick behind hand combinations, and the mechanics of checking one without eating the shin. Covers stance switching and the timing window for counter low kicks.",
-    takeaways: ["Load the kick from the ball of your plant foot, not the hip", "Check with the shin angled, not flat-footed", "Feint high before committing low to break the read"],
-    drills: "4 rounds x 3 minutes shadow work, then 3 rounds on the Thai pads"
-  },
-  {
-    id: "v3", title: "Closed Guard Fundamentals", category: "BJJ", level: "Beginner",
-    duration: "14:05", videoUrl: "https://www.youtube.com/embed/M7lc1UVf-VE",
-    description: "Everything starts here. Proper hip and ankle positioning in closed guard, how to break posture, and the two grips that set up every submission and sweep in this position.",
-    takeaways: ["Hips off the mat, not flat on your back", "Break posture with a wrist and collar grip combo", "Ankles crossed loose, never locked under pressure"],
-    drills: "10 minutes of specific sparring starting from closed guard"
-  },
-  {
-    id: "v4", title: "Double Leg Takedown Mechanics", category: "Grappling", level: "Beginner",
-    duration: "13:15", videoUrl: "https://www.youtube.com/embed/M7lc1UVf-VE",
-    description: "Level change, penetration step, and the finish — the double leg broken into three teachable phases with common mistakes at every stage.",
-    takeaways: ["Level change with the legs, not a bent-over back", "Drive through the hip on the penetration step", "Finish by running the feet, not just pulling in"],
-    drills: "6 sets of 5 reps against a bag, then 4 live reps against resistance"
-  },
-  {
-    id: "v5", title: "Fight Camp Conditioning Circuit", category: "Conditioning", level: "Beginner",
-    duration: "25:00", videoUrl: "https://www.youtube.com/embed/M7lc1UVf-VE",
-    description: "The exact circuit used in fight camp to build fight-specific gas tank — combining explosive output with the aerobic recovery capacity needed for a full three-round fight.",
-    takeaways: ["Match work-to-rest ratio to your actual round length", "Explosive movements first, steady-state after", "Track heart rate recovery between rounds, not just output"],
-    drills: "6 rounds x 5 minutes, 1 minute rest, full-body circuit"
+  <section class="app-view" id="authView"><div class="wrap"><div class="panel auth-wrap">
+    <div class="eyebrow">MEMBER ACCESS</div><h1 style="font:42px 'Bebas Neue';margin:8px 0 4px" id="authTitle">WELCOME BACK</h1><p class="muted" id="authSubtitle" style="font-size:13px">Sign in to access your training library.</p>
+    <div class="tabs"><button class="btn active" id="loginTab" onclick="showAuth('login')">Log in</button><button class="btn" id="signupTab" onclick="showAuth('signup')">Create account</button></div>
+    <div id="authMessage"></div>
+    <form id="authForm">
+      <div class="field hidden" id="nameField"><label>FULL NAME</label><input id="fullName" autocomplete="name" placeholder="Your name"></div>
+      <div class="field"><label>EMAIL ADDRESS</label><input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label>PASSWORD</label><input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters"></div>
+      <button class="btn primary" style="width:100%;margin-top:10px" id="authSubmit">LOG IN</button>
+    </form>
+    <p class="muted" style="font-size:11px;margin-top:18px">Accounts are securely managed by Firebase Authentication.</p>
+  </div></div></section>
+
+  <section class="app-view" id="dashboardView"><div class="wrap">
+    <div class="dashboard-top"><div><div class="eyebrow">MEMBER AREA</div><h1>YOUR TRAINING LIBRARY</h1><div class="muted" id="welcomeText" style="font-size:13px">Welcome back.</div></div><div><button class="btn" id="adminShortcut" onclick="showView('admin')">ADMIN PANEL</button> <button class="btn" onclick="logout()">LOG OUT</button></div></div>
+    <div class="panel" style="margin-bottom:20px"><div style="display:flex;justify-content:space-between;gap:12px"><strong style="font-size:13px">YOUR LEARNING PROGRESS</strong><span class="muted" id="progressText" style="font-size:12px">0 / 0 completed</span></div><div class="progressbar"><span id="progressFill" style="width:0%"></span></div></div>
+    <div class="toolbar"><input id="videoSearch" placeholder="Search techniques or lessons..."><select id="categoryFilter"><option value="">All disciplines</option><option>Striking</option><option>BJJ</option><option>Grappling</option><option>Conditioning</option><option>MMA</option></select><select id="levelFilter"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+    <div id="videoGrid" class="video-grid"><div class="empty">Loading your training library...</div></div>
+  </div></section>
+
+  <section class="app-view" id="adminView"><div class="wrap">
+    <div class="dashboard-top"><div><div class="eyebrow">ACADEMY MANAGEMENT</div><h1>ADMIN CONTROL PANEL</h1><div class="muted" style="font-size:13px">Manage the content displayed in your members' library.</div></div><button class="btn" onclick="showView('dashboard')">← BACK TO LIBRARY</button></div>
+    <div class="admin-layout">
+      <aside class="panel admin-nav"><button class="btn active" onclick="adminTab('videos',this)">Video library</button><button class="btn" onclick="adminTab('add',this)">Add a video</button><button class="btn" onclick="adminTab('help',this)">Upload guide</button></aside>
+      <div class="panel admin-content" id="adminContent"></div>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap footer-inner"><div><a class="brand" href="#" onclick="showView('home');return false"><span class="brandmark">V</span><span><strong>VANGUARDS <em>MMA</em></strong><small>ACADEMY</small></span></a><p>Train with purpose. Improve every round.</p></div><div>© <span id="year"></span> Vanguards MMA Academy · Train responsibly.</div></div></footer>
+
+<div class="modal" id="videoModal" onclick="if(event.target===this)closeVideo()"><div class="modal-box"><div class="modal-head"><strong id="modalTitle">Lesson</strong><button class="btn small" onclick="closeVideo()">✕ CLOSE</button></div><div class="player" id="videoPlayer"></div><div class="modal-body"><div class="chips" id="modalChips"></div><p id="modalDescription"></p><h3 style="font-size:13px">KEY TAKEAWAYS</h3><ul id="modalTakeaways"></ul><p id="modalDrills"></p><button class="btn primary" id="completeButton">MARK AS COMPLETED</button></div></div></div>
+
+<script>
+/* ===================== SETUP: paste your Firebase web config here ===================== */
+const firebaseConfig = {
+  apiKey: "PASTE_API_KEY_HERE",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "PASTE_APP_ID_HERE"
+};
+/* Add your own Firebase Authentication UID here after creating your first account. */
+const ADMIN_UIDS = ["PASTE_YOUR_ADMIN_UID_HERE"];
+/* ===================================================================================== */
+
+let auth=null, db=null, currentUser=null, userProfile=null, videos=[], completedIds=new Set(), authMode="login", activeAdminTab="videos", editingVideoId=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const isConfigured=()=>firebaseConfig.apiKey!=="PASTE_API_KEY_HERE" && firebaseConfig.projectId!=="YOUR_PROJECT_ID";
+function message(id,text,ok=false){$(id).innerHTML=text?`<div class="notice ${ok?'success':''}">${esc(text)}</div>`:"";}
+function isAdmin(){return !!currentUser && ADMIN_UIDS.includes(currentUser.uid);}
+function initFirebase(){
+  if(!isConfigured()){console.warn("Firebase is not configured yet.");return false;}
+  firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
+  auth.onAuthStateChanged(async user=>{
+    currentUser=user;userProfile=null;
+    if(user){try{const snap=await db.collection("users").doc(user.uid).get();userProfile=snap.exists?snap.data():{};await loadProgress();await loadVideos();showView("dashboard");}catch(e){console.error(e);showView("dashboard");}}
+    updateNav();
+  });
+  return true;
+}
+function updateNav(){
+  $("navActions").innerHTML=currentUser?`<span class="muted" style="font-size:12px">${esc(userProfile?.name||currentUser.email)}</span><button class="btn primary" onclick="showView('dashboard')">MY LIBRARY</button>`:`<button class="btn" onclick="showAuth('login')">Member Login</button><button class="btn primary" onclick="showAuth('signup')">Join Academy</button>`;
+}
+function showView(name){
+  $("homeView").style.display=name==="home"?"block":"none";
+  ["auth","dashboard","admin"].forEach(v=>{$(v+"View").classList.toggle("active",name===v);});
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(name==="admin"){if(!isAdmin()){showView("dashboard");return;}renderAdmin();}
+  if(name==="dashboard"&&currentUser){renderVideos();}
+}
+function showAuth(mode){
+  authMode=mode;showView("auth");
+  $("authTitle").textContent=mode==="signup"?"CREATE YOUR ACCOUNT":"WELCOME BACK";
+  $("authSubtitle").textContent=mode==="signup"?"Register to access your academy training library.":"Sign in to access your training library.";
+  $("nameField").classList.toggle("hidden",mode!=="signup");
+  $("fullName").required=mode==="signup";
+  $("loginTab").classList.toggle("active",mode==="login");$("signupTab").classList.toggle("active",mode==="signup");
+  $("authSubmit").textContent=mode==="signup"?"CREATE ACCOUNT":"LOG IN";message("authMessage","");
+}
+$("authForm").addEventListener("submit",async e=>{
+  e.preventDefault();if(!isConfigured()){message("authMessage","Firebase is not configured. Follow the setup guide in README.md.");return;}
+  const email=$("email").value.trim(),password=$("password").value,name=$("fullName").value.trim();
+  $("authSubmit").disabled=true;$("authSubmit").textContent="PLEASE WAIT...";
+  try{
+    if(authMode==="signup"){
+      if(!name)throw new Error("Enter your full name.");
+      const cred=await auth.createUserWithEmailAndPassword(email,password);
+      await db.collection("users").doc(cred.user.uid).set({name,email,role:"student",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    }else{await auth.signInWithEmailAndPassword(email,password);}
+  }catch(err){message("authMessage",friendlyError(err));}
+  finally{$("authSubmit").disabled=false;$("authSubmit").textContent=authMode==="signup"?"CREATE ACCOUNT":"LOG IN";}
+});
+function friendlyError(e){const map={"auth/email-already-in-use":"This email is already registered.","auth/invalid-email":"Enter a valid email address.","auth/weak-password":"Use a password with at least 6 characters.","auth/user-not-found":"No account was found with this email.","auth/wrong-password":"Incorrect email or password.","auth/invalid-credential":"Incorrect email or password.","auth/too-many-requests":"Too many attempts. Try again later."};return map[e.code]||e.message||"Something went wrong.";}
+async function logout(){if(auth)await auth.signOut();currentUser=null;userProfile=null;videos=[];completedIds.clear();updateNav();showView("home");}
+async function loadVideos(){
+  if(!db)return;const snap=await db.collection("videos").orderBy("createdAt","desc").get();videos=snap.docs.map(d=>({id:d.id,...d.data()}));renderVideos();
+}
+async function loadProgress(){
+  if(!db||!currentUser)return;const snap=await db.collection("users").doc(currentUser.uid).collection("progress").get();completedIds=new Set(snap.docs.map(d=>d.id));
+}
+function renderVideos(){
+  if(!currentUser)return;
+  $("welcomeText").textContent=`Welcome back, ${userProfile?.name||currentUser.email}.`;
+  $("adminShortcut").classList.toggle("hidden",!isAdmin());
+  const count=videos.length,done=completedIds.size,pct=count?Math.round(done/count*100):0;
+  $("progressText").textContent=`${done} / ${count} completed`; $("progressFill").style.width=pct+"%";
+  const q=$("videoSearch").value.toLowerCase(),cat=$("categoryFilter").value,lvl=$("levelFilter").value;
+  const filtered=videos.filter(v=>(!cat||v.category===cat)&&(!lvl||v.level===lvl)&&(`${v.title} ${v.description||""} ${v.category}`.toLowerCase().includes(q)));
+  $("videoGrid").innerHTML=filtered.length?filtered.map(v=>`<article class="video-card" onclick="openVideo('${v.id}')"><div class="thumb">${v.thumbnailUrl?`<img src="${esc(v.thumbnailUrl)}" alt="">`:`<div style="height:100%;display:grid;place-items:center;font:45px 'Bebas Neue';color:#555">V MMA</div>`}<div class="play">▶</div></div><div class="video-info"><div class="chips"><span class="chip">${esc(v.category)}</span><span class="chip">${esc(v.level)}</span></div><h3>${esc(v.title)}</h3><p>${esc(v.duration||"")} ${completedIds.has(v.id)?" · ✓ Completed":""}</p><div class="video-actions"><span class="text-btn">OPEN LESSON →</span><span class="muted" style="font-size:11px">${completedIds.has(v.id)?"✓ Done":"Not completed"}</span></div></div></article>`).join(""):`<div class="empty" style="grid-column:1/-1">${videos.length?"No lessons match your filters.":"No lessons have been published yet. Your coach will add videos here."}</div>`;
+}
+["videoSearch","categoryFilter","levelFilter"].forEach(id=>$(id).addEventListener(id==="videoSearch"?"input":"change",renderVideos));
+function getEmbed(url){
+  try{
+    const u=new URL(url);
+    if(u.hostname.includes("youtu.be"))return {type:"iframe",src:`https://www.youtube-nocookie.com/embed/${u.pathname.slice(1).split("/")[0]}`};
+    if(u.hostname.includes("youtube.com")){const id=u.searchParams.get("v")||u.pathname.split("/").filter(Boolean).pop();if(id==="live")return {type:"iframe",src:`https://www.youtube-nocookie.com/embed/${u.pathname.split("/").pop()}`};return {type:"iframe",src:`https://www.youtube-nocookie.com/embed/${id}`};}
+    if(u.hostname.includes("vimeo.com")){const id=u.pathname.split("/").filter(Boolean).pop();return {type:"iframe",src:`https://player.vimeo.com/video/${id}`};}
+    if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(u.pathname+u.search))return {type:"video",src:url};
+    return {type:"iframe",src:url};
+  }catch{return {type:"iframe",src:url};}
+}
+function openVideo(id){
+  const v=videos.find(x=>x.id===id);if(!v)return;
+  $("modalTitle").textContent=v.title;$("modalChips").innerHTML=`<span class="chip">${esc(v.category)}</span><span class="chip">${esc(v.level)}</span><span class="chip">${esc(v.duration||"")}</span>`;
+  const media=getEmbed(v.videoUrl);$("videoPlayer").innerHTML=media.type==="video"?`<video controls playsinline src="${esc(media.src)}"></video>`:`<iframe src="${esc(media.src)}" title="${esc(v.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  $("modalDescription").textContent=v.description||"";
+  const takeaways=Array.isArray(v.takeaways)?v.takeaways:[];$("modalTakeaways").innerHTML=takeaways.map(t=>`<li>${esc(t)}</li>`).join("");
+  $("modalDrills").textContent=v.drills?`DRILL: ${v.drills}`:"";
+  $("completeButton").textContent=completedIds.has(id)?"✓ COMPLETED — MARK INCOMPLETE":"MARK AS COMPLETED";
+  $("completeButton").onclick=()=>toggleComplete(id);$("videoModal").classList.add("open");
+}
+function closeVideo(){$("videoModal").classList.remove("open");$("videoPlayer").innerHTML="";}
+async function toggleComplete(id){
+  if(!currentUser||!db)return;const ref=db.collection("users").doc(currentUser.uid).collection("progress").doc(id);
+  try{if(completedIds.has(id)){await ref.delete();completedIds.delete(id);}else{await ref.set({completedAt:firebase.firestore.FieldValue.serverTimestamp()});completedIds.add(id);}renderVideos();openVideo(id);}catch(e){alert("Could not save progress: "+e.message);}
+}
+function adminTab(tab,btn){activeAdminTab=tab;document.querySelectorAll(".admin-nav button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");renderAdmin();}
+function renderAdmin(){
+  if(!isAdmin())return;const c=$("adminContent");
+  if(activeAdminTab==="videos"){
+    c.innerHTML=`<h2>PUBLISHED VIDEOS</h2><p class="muted" style="font-size:12px">These lessons are visible to authenticated members.</p><button class="btn primary" onclick="adminTab('add',document.querySelectorAll('.admin-nav button')[1])">+ ADD NEW VIDEO</button><div class="admin-list">${videos.length?videos.map(v=>`<div class="admin-row"><div><strong>${esc(v.title)}</strong><small>${esc(v.category)} · ${esc(v.level)} · ${esc(v.duration||"")}</small></div><div style="display:flex;gap:7px"><button class="btn small" onclick="editVideo('${v.id}')">EDIT</button><button class="btn small ghost-red" onclick="deleteVideo('${v.id}')">DELETE</button></div></div>`).join(""):`<div class="empty">No videos yet. Add your first lesson.</div>`}</div>`;
+  }else if(activeAdminTab==="add"){
+    const v=editingVideoId?videos.find(x=>x.id===editingVideoId):{};
+    c.innerHTML=`<h2>${editingVideoId?"EDIT VIDEO":"ADD A VIDEO"}</h2><p class="muted" style="font-size:12px">Add a YouTube, Vimeo or direct MP4 video link. Do not paste a link to a file on your computer.</p><div id="adminMessage"></div><form id="videoForm" class="admin-form">
+      <div class="field wide"><label>VIDEO TITLE *</label><input id="vTitle" required value="${esc(v?.title||"")}" placeholder="e.g. Double Leg Takedown Mechanics"></div>
+      <div class="field"><label>CATEGORY *</label><select id="vCategory"><option ${v?.category==="Striking"?"selected":""}>Striking</option><option ${v?.category==="BJJ"?"selected":""}>BJJ</option><option ${v?.category==="Grappling"?"selected":""}>Grappling</option><option ${v?.category==="Conditioning"?"selected":""}>Conditioning</option><option ${v?.category==="MMA"?"selected":""}>MMA</option></select></div>
+      <div class="field"><label>LEVEL *</label><select id="vLevel"><option ${v?.level==="Beginner"?"selected":""}>Beginner</option><option ${v?.level==="Intermediate"?"selected":""}>Intermediate</option><option ${v?.level==="Advanced"?"selected":""}>Advanced</option></select></div>
+      <div class="field"><label>DURATION</label><input id="vDuration" value="${esc(v?.duration||"")}" placeholder="12:34"></div>
+      <div class="field"><label>THUMBNAIL URL (OPTIONAL)</label><input id="vThumb" value="${esc(v?.thumbnailUrl||"")}" placeholder="https://..."></div>
+      <div class="field wide"><label>VIDEO LINK *</label><input id="vUrl" type="url" required value="${esc(v?.videoUrl||"")}" placeholder="YouTube / Vimeo / direct MP4 URL"></div>
+      <div class="field wide"><label>DESCRIPTION</label><textarea id="vDescription" placeholder="What will students learn?">${esc(v?.description||"")}</textarea></div>
+      <div class="field wide"><label>KEY TAKEAWAYS (ONE PER LINE)</label><textarea id="vTakeaways" placeholder="Keep your chin tucked&#10;Return hands to guard">${esc((v?.takeaways||[]).join("\n"))}</textarea></div>
+      <div class="field wide"><label>DRILL / HOMEWORK</label><textarea id="vDrills">${esc(v?.drills||"")}</textarea></div>
+      <div class="wide" style="display:flex;gap:9px;flex-wrap:wrap;margin-top:10px"><button class="btn primary" id="saveVideoBtn">${editingVideoId?"SAVE CHANGES":"PUBLISH VIDEO"}</button><button type="button" class="btn" onclick="editingVideoId=null;adminTab('videos',document.querySelectorAll('.admin-nav button')[0])">CANCEL</button></div>
+    </form>`;
+    $("videoForm").addEventListener("submit",saveVideo);
+  }else{
+    c.innerHTML=`<h2>HOW TO ADD YOUR TRAINING VIDEOS</h2><ol style="color:#bbb;font-size:13px;line-height:2;padding-left:20px"><li>Upload your video to YouTube (recommended) or Vimeo.</li><li>For members-only lessons, set YouTube visibility to <b>Unlisted</b>. Anyone with the link can still share it, so do not treat unlisted as DRM.</li><li>Copy the video's normal share link, such as <code>https://youtu.be/VIDEO_ID</code>.</li><li>Open <b>Add a video</b>, fill in its title, category, level and video link.</li><li>Add a thumbnail URL if you have one, then click <b>Publish Video</b>.</li><li>The lesson will appear in the student library after publishing.</li></ol><div class="notice">Do not upload large video files to your GitHub repository. GitHub Pages is for website files, not video hosting. For direct in-site uploads, a cloud video/storage service and additional setup are required.</div>`;
   }
-];
-
-function getYouTubeEmbedUrl(url) {
-  if (!url) return "";
-  if (url.includes("embed/")) return url;
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-  const match = url.match(regExp);
-  return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : url;
 }
-
-const CATEGORY_STYLES = {
-  Striking: { icon: Flame, chip: "bg-red-600/15 text-red-400 border-red-600/30" },
-  BJJ: { icon: Users, chip: "bg-orange-600/15 text-orange-400 border-orange-600/30" },
-  Grappling: { icon: Target, chip: "bg-red-500/15 text-red-300 border-red-500/30" },
-  Conditioning: { icon: Dumbbell, chip: "bg-neutral-600/20 text-neutral-300 border-neutral-500/30" }
-};
-
-const LEVEL_STYLES = {
-  Beginner: "bg-emerald-600/15 text-emerald-400 border-emerald-600/30",
-  Intermediate: "bg-amber-600/15 text-amber-400 border-amber-600/30",
-  Advanced: "bg-red-600/15 text-red-400 border-red-600/30"
-};
-
-/* =========================================================================
-   AUTH CONTEXT (WITH LOCALSTORAGE PERSISTENCE)
-========================================================================= */
-const AuthContext = createContext(null);
-const useAuth = () => useContext(AuthContext);
-
-function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(() => {
-    const saved = localStorage.getItem("vanguards_user");
-    return saved ? JSON.parse(saved) : null;
-  });
-  const [authLoading, setAuthLoading] = useState(false);
-
-  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const signup = ({ name, email, password, confirmPassword }) => {
-    return new Promise((resolve, reject) => {
-      if (!name.trim()) return reject("Please enter your full name.");
-      if (!validateEmail(email)) return reject("The email address is badly formatted.");
-      if (password.length < 6) return reject("Password should be at least 6 characters.");
-      if (password !== confirmPassword) return reject("Passwords do not match.");
-      setAuthLoading(true);
-      setTimeout(() => {
-        setAuthLoading(false);
-        // If email contains admin or is admin@vanguards.com, grant admin rights
-        const isAdmin = email.toLowerCase().includes("admin") || email.toLowerCase() === "coach@vanguards.com";
-        const user = { uid: "user-" + Date.now(), name, email, isAdmin };
-        setCurrentUser(user);
-        localStorage.setItem("vanguards_user", JSON.stringify(user));
-        resolve(user);
-      }, 700);
-    });
-  };
-
-  const login = ({ email, password }) => {
-    return new Promise((resolve, reject) => {
-      if (!validateEmail(email)) return reject("The email address is badly formatted.");
-      if (password.length < 6) return reject("Wrong password. Minimum 6 characters.");
-      setAuthLoading(true);
-      setTimeout(() => {
-        setAuthLoading(false);
-        const isAdmin = email.toLowerCase().includes("admin") || email.toLowerCase() === "coach@vanguards.com";
-        const user = { uid: "user-" + Date.now(), name: email.split("@")[0], email, isAdmin };
-        setCurrentUser(user);
-        localStorage.setItem("vanguards_user", JSON.stringify(user));
-        resolve(user);
-      }, 700);
-    });
-  };
-
-  const logout = () => {
-    setCurrentUser(null);
-    localStorage.removeItem("vanguards_user");
-  };
-
-  return (
-    <AuthContext.Provider value={{ currentUser, authLoading, signup, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+function editVideo(id){editingVideoId=id;adminTab("add",document.querySelectorAll(".admin-nav button")[1]);}
+async function saveVideo(e){
+  e.preventDefault();const btn=$("saveVideoBtn");btn.disabled=true;btn.textContent="SAVING...";
+  const data={title:$("vTitle").value.trim(),category:$("vCategory").value,level:$("vLevel").value,duration:$("vDuration").value.trim(),thumbnailUrl:$("vThumb").value.trim(),videoUrl:$("vUrl").value.trim(),description:$("vDescription").value.trim(),takeaways:$("vTakeaways").value.split("\n").map(x=>x.trim()).filter(Boolean),drills:$("vDrills").value.trim(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()};
+  try{
+    if(!data.title||!data.videoUrl)throw new Error("Title and video link are required.");
+    if(editingVideoId){await db.collection("videos").doc(editingVideoId).update(data);}
+    else{data.createdAt=firebase.firestore.FieldValue.serverTimestamp();data.createdBy=currentUser.uid;await db.collection("videos").add(data);}
+    editingVideoId=null;await loadVideos();adminTab("videos",document.querySelectorAll(".admin-nav button")[0]);
+  }catch(err){message("adminMessage",err.message);}
+  finally{if($("saveVideoBtn")){$("saveVideoBtn").disabled=false;}}
 }
-
-/* =========================================================================
-   SHARED UI PIECES
-========================================================================= */
-function Logo({ onClick }) {
-  return (
-    <button onClick={onClick} className="flex items-center gap-2 group">
-      <span className="flex items-center justify-center w-9 h-9 rounded-md bg-red-600 group-hover:bg-red-500 transition-colors duration-300">
-        <Swords className="w-5 h-5 text-black" strokeWidth={2.5} />
-      </span>
-      <span className="leading-none text-left">
-        <span
-          className="block text-xl text-white tracking-wide"
-          style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.04em" }}
-        >
-          VANGUARDS <span className="text-red-500">MMA</span>
-        </span>
-        <span className="block text-[10px] text-neutral-500 tracking-[0.3em]">ACADEMY</span>
-      </span>
-    </button>
-  );
+async function deleteVideo(id){
+  const v=videos.find(x=>x.id===id);if(!v||!confirm(`Delete "${v.title}"? This cannot be undone.`))return;
+  try{await db.collection("videos").doc(id).delete();await loadVideos();renderAdmin();}catch(e){alert("Delete failed: "+e.message);}
 }
-
-function Header({ view, setView, setAuthMode }) {
-  const { currentUser, logout } = useAuth();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const go = (v) => { setView(v); setMobileOpen(false); };
-
-  return (
-    <header className="sticky top-0 z-40 bg-black/90 backdrop-blur border-b border-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Logo onClick={() => go("landing")} />
-
-        <nav className="hidden md:flex items-center gap-8">
-          <button
-            onClick={() => go("landing")}
-            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${view === "landing" ? "text-white" : "text-neutral-400 hover:text-white"}`}
-          >
-            HOME
-          </button>
-          <button
-            onClick={() => go(currentUser ? "dashboard" : "auth")}
-            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${view === "dashboard" ? "text-white" : "text-neutral-400 hover:text-white"}`}
-          >
-            VIDEO LIBRARY
-          </button>
-        </nav>
-
-        <div className="hidden md:flex items-center gap-3">
-          {currentUser ? (
-            <div className="flex items-center gap-3">
-              <span className="flex items-center gap-2 text-sm text-neutral-300">
-                <span className="w-7 h-7 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center">
-                  <User className="w-3.5 h-3.5 text-red-400" />
-                </span>
-                {currentUser.name} {currentUser.isAdmin && <span className="text-[10px] bg-red-600 text-white px-1.5 py-0.5 rounded font-mono">COACH</span>}
-              </span>
-              <button
-                onClick={() => { logout(); go("landing"); }}
-                className="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-red-400 transition-colors duration-200 border border-neutral-800 hover:border-red-900 rounded-md px-3 py-1.5"
-              >
-                <LogOut className="w-3.5 h-3.5" /> Logout
-              </button>
-            </div>
-          ) : (
-            <>
-              <button
-                onClick={() => { setAuthMode("login"); go("auth"); }}
-                className="text-sm font-medium text-neutral-300 hover:text-white transition-colors duration-200 px-3 py-2"
-              >
-                Log In
-              </button>
-              <button
-                onClick={() => { setAuthMode("signup"); go("auth"); }}
-                className="text-sm font-semibold bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-md transition-all duration-300 hover:scale-[1.02]"
-              >
-                Start Training
-              </button>
-            </>
-          )}
-        </div>
-
-        <button className="md:hidden text-neutral-300" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {mobileOpen && (
-        <div className="md:hidden border-t border-neutral-800 bg-black px-4 py-4 space-y-3">
-          <button onClick={() => go("landing")} className="block w-full text-left text-neutral-300 py-2">Home</button>
-          <button onClick={() => go(currentUser ? "dashboard" : "auth")} className="block w-full text-left text-neutral-300 py-2">Video Library</button>
-          {currentUser ? (
-            <button onClick={() => { logout(); go("landing"); }} className="flex items-center gap-2 text-red-400 py-2">
-              <LogOut className="w-4 h-4" /> Logout
-            </button>
-          ) : (
-            <div className="flex gap-3 pt-2">
-              <button onClick={() => { setAuthMode("login"); go("auth"); }} className="flex-1 border border-neutral-700 text-neutral-200 rounded-md py-2 text-sm">Log In</button>
-              <button onClick={() => { setAuthMode("signup"); go("auth"); }} className="flex-1 bg-red-600 text-white rounded-md py-2 text-sm font-semibold">Sign Up</button>
-            </div>
-          )}
-        </div>
-      )}
-    </header>
-  );
+$("year").textContent=new Date().getFullYear();
+if(!initFirebase()){
+  // Show a clear setup notice instead of pretending that demo authentication works.
+  const n=document.createElement("div");n.className="notice";n.style.cssText="position:fixed;bottom:12px;left:12px;right:12px;z-index:100;max-width:850px;margin:auto";
+  n.innerHTML="SETUP REQUIRED: connect your Firebase project in <b>index.html</b> before using login, signup or the video library. See <b>README.md</b>.";document.body.appendChild(n);
 }
-
-function Footer({ setView }) {
-  return (
-    <footer className="bg-black border-t border-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div>
-          <Logo onClick={() => setView("landing")} />
-          <p className="mt-4 text-sm text-neutral-500 leading-relaxed max-w-xs">
-            Vanguards Combat Academy — built for fighters who demand technical precision and relentless conditioning.
-          </p>
-          <div className="flex gap-3 mt-5">
-            {[Instagram, Youtube, Twitter].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-9 h-9 rounded-md bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-red-400 hover:border-red-900 transition-all duration-300"
-              >
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h4 className="text-white text-sm font-semibold tracking-wide mb-4">QUICK LINKS</h4>
-          <ul className="space-y-2.5 text-sm text-neutral-500">
-            <li><button onClick={() => setView("landing")} className="hover:text-red-400 transition-colors duration-200">Home</button></li>
-            <li><button onClick={() => setView("auth")} className="hover:text-red-400 transition-colors duration-200">Membership</button></li>
-            <li><button onClick={() => setView("dashboard")} className="hover:text-red-400 transition-colors duration-200">Video Library</button></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white text-sm font-semibold tracking-wide mb-4">THE ACADEMY</h4>
-          <p className="flex items-start gap-2 text-sm text-neutral-500 mb-2">
-            <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-red-500" />
-            Vanguards Combat Academy, Giza
-          </p>
-          <p className="text-sm text-neutral-500">Sat–Thu · Open Daily</p>
-        </div>
-      </div>
-
-      <div className="border-t border-neutral-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between gap-3">
-          <p className="text-xs text-neutral-600">© 2026 Vanguards MMA Academy. All rights reserved.</p>
-          <p className="text-xs text-neutral-600 max-w-xl">
-            Combat sports carry inherent risk. Train under supervision.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-/* =========================================================================
-   LANDING PAGE
-========================================================================= */
-const PROGRAMS = [
-  { name: "Striking / Kickboxing", icon: Flame, tags: ["Boxing", "Muay Thai", "Footwork"], desc: "Build fight-ready hands and kicks through pad work, combination drilling, and live sparring rounds." },
-  { name: "Brazilian Jiu-Jitsu", icon: Users, tags: ["Guard", "Submissions", "Escapes"], desc: "From closed guard to advanced back takes — a curriculum built on control before submission." },
-  { name: "Wrestling", icon: Target, tags: ["Takedowns", "Defense", "Scrambles"], desc: "Learn to dictate where the fight happens with real takedown offense and defense." },
-  { name: "MMA Integration", icon: Swords, tags: ["Cage Work", "Transitions", "Fight IQ"], desc: "Combine every discipline into one system — the phase where fights are actually won." }
-];
-
-const FEATURES = [
-  { icon: Video, title: "Online Video Library", desc: "Every technique taught in the gym, archived and searchable so you can review anytime." },
-  { icon: TrendingUp, title: "Track Your Progress", desc: "Mark techniques as completed and watch your training log build session by session." },
-  { icon: ShieldCheck, title: "Expert Coaching", desc: "Structured lessons designed for rapid technical growth and sparring readiness." }
-];
-
-function Landing({ setView, setAuthMode }) {
-  return (
-    <div>
-      <section className="relative overflow-hidden bg-black">
-        <div className="absolute -top-24 -right-40 w-[600px] h-[600px] bg-red-700/20 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 -left-32 w-[400px] h-[400px] bg-red-900/20 rounded-full blur-[100px]" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-28 md:pt-36 md:pb-40">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-red-500 border border-red-900/60 bg-red-950/30 rounded-full px-3 py-1.5">
-              <Flame className="w-3.5 h-3.5" /> VANGUARDS COMBAT ACADEMY
-            </span>
-            <h1
-              className="mt-6 text-white leading-[0.95] text-6xl sm:text-7xl md:text-8xl"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.01em" }}
-            >
-              TRAIN UNTIL <br /> THE <span className="text-red-500">BELL RINGS</span>
-            </h1>
-            <p className="mt-6 text-neutral-400 text-lg max-w-xl leading-relaxed">
-              Striking, jiu-jitsu, wrestling, and full MMA integration — backed by an online video library 
-              that keeps the work going after you leave the mat.
-            </p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => { setAuthMode("signup"); setView("auth"); }}
-                className="group inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold text-sm tracking-wide px-7 py-4 rounded-md transition-all duration-300 hover:scale-[1.02]"
-              >
-                START TRAINING NOW
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-              <button
-                onClick={() => { setAuthMode("login"); setView("auth"); }}
-                className="inline-flex items-center justify-center gap-2 border border-neutral-700 hover:border-neutral-500 text-neutral-200 font-semibold text-sm tracking-wide px-7 py-4 rounded-md transition-all duration-300 hover:scale-[1.02]"
-              >
-                Member Login
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-neutral-950 border-t border-neutral-900 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <span className="text-xs font-semibold tracking-[0.25em] text-red-500">DISCIPLINES</span>
-            <h2 className="mt-2 text-4xl md:text-5xl text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              WHAT WE TEACH
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {PROGRAMS.map((p) => {
-              const Icon = p.icon;
-              return (
-                <div key={p.name} className="group bg-neutral-900 border border-neutral-800 hover:border-red-800/60 rounded-lg p-6 transition-all duration-300">
-                  <div className="w-11 h-11 rounded-md bg-red-600/10 border border-red-700/30 flex items-center justify-center text-red-500">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="mt-5 text-white font-semibold text-lg">{p.name}</h3>
-                  <p className="mt-2 text-sm text-neutral-500 leading-relaxed">{p.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-/* =========================================================================
-   AUTH PAGE
-========================================================================= */
-function AuthPage({ authMode, setAuthMode, setView }) {
-  const { login, signup, authLoading } = useAuth();
-  const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
-  const [error, setError] = useState("");
-  const [showPw, setShowPw] = useState(false);
-
-  const isSignup = authMode === "signup";
-  const update = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    const action = isSignup ? signup(form) : login(form);
-    action.then(() => setView("dashboard")).catch((msg) => setError(msg));
-  };
-
-  return (
-    <div className="min-h-[calc(100vh-4rem)] bg-black flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-md bg-neutral-900 border border-neutral-800 rounded-xl p-8">
-        <div className="flex gap-2 mb-6 bg-neutral-950 border border-neutral-800 rounded-md p-1">
-          <button
-            onClick={() => setAuthMode("login")}
-            className={`flex-1 text-sm font-semibold py-2 rounded transition-all ${authMode === "login" ? "bg-red-600 text-white" : "text-neutral-400"}`}
-          >
-            Log In
-          </button>
-          <button
-            onClick={() => setAuthMode("signup")}
-            className={`flex-1 text-sm font-semibold py-2 rounded transition-all ${authMode === "signup" ? "bg-red-600 text-white" : "text-neutral-400"}`}
-          >
-            Sign Up
-          </button>
-        </div>
-
-        <h2 className="text-2xl text-white font-semibold">{isSignup ? "Create Account" : "Welcome Back"}</h2>
-        <p className="text-sm text-neutral-500 mt-1 mb-6">Enter your details to access the video library.</p>
-
-        {error && (
-          <div className="mb-4 flex items-center gap-2 bg-red-950/50 border border-red-900 rounded-md p-3 text-sm text-red-400">
-            <AlertCircle className="w-4 h-4 shrink-0" /> {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {isSignup && (
-            <div>
-              <label className="block text-xs font-medium text-neutral-400 mb-1">Full Name</label>
-              <input
-                type="text" value={form.name} onChange={update("name")} required placeholder="Coach Andrew"
-                className="w-full bg-neutral-950 border border-neutral-800 rounded-md px-3 py-2.5 text-sm text-white focus:border-red-600 outline-none"
-              />
-            </div>
-          )}
-          <div>
-            <label className="block text-xs font-medium text-neutral-400 mb-1">Email (Use 'admin@vanguards.com' for Coach Access)</label>
-            <input
-              type="email" value={form.email} onChange={update("email")} required placeholder="you@vanguards.com"
-              className="w-full bg-neutral-950 border border-neutral-800 rounded-md px-3 py-2.5 text-sm text-white focus:border-red-600 outline-none"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-neutral-400 mb-1">Password</label>
-            <input
-              type="password" value={form.password} onChange={update("password")} required placeholder="••••••••"
-              className="w-full bg-neutral-950 border border-neutral-800 rounded-md px-3 py-2.5 text-sm text-white focus:border-red-600 outline-none"
-            />
-          </div>
-          {isSignup && (
-            <div>
-              <label className="block text-xs font-medium text-neutral-400 mb-1">Confirm Password</label>
-              <input
-                type="password" value={form.confirmPassword} onChange={update("confirmPassword")} required placeholder="••••••••"
-                className="w-full bg-neutral-950 border border-neutral-800 rounded-md px-3 py-2.5 text-sm text-white focus:border-red-600 outline-none"
-              />
-            </div>
-          )}
-          <button
-            type="submit" disabled={authLoading}
-            className="w-full bg-red-600 hover:bg-red-500 text-white font-semibold text-sm py-3 rounded-md transition-all flex items-center justify-center gap-2"
-          >
-            {authLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : (isSignup ? "Create Account" : "Log In")}
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-/* =========================================================================
-   ADD VIDEO MODAL (ADMIN ONLY)
-========================================================================= */
-function AddVideoModal({ isOpen, onClose, onAddVideo }) {
-  const [form, setForm] = useState({
-    title: "", category: "Striking", level: "Beginner",
-    duration: "10:00", videoUrl: "", description: "", takeaways: "", drills: ""
-  });
-
-  if (!isOpen) return null;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newVideo = {
-      id: "v-" + Date.now(),
-      title: form.title,
-      category: form.category,
-      level: form.level,
-      duration: form.duration,
-      videoUrl: getYouTubeEmbedUrl(form.videoUrl),
-      description: form.description,
-      takeaways: form.takeaways.split("\n").filter(Boolean),
-      drills: form.drills
-    };
-    onAddVideo(newVideo);
-    onClose();
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold text-white">Add New Training Video</h2>
-          <button onClick={onClose} className="text-neutral-400 hover:text-white"><X className="w-5 h-5" /></button>
-        </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-xs font-medium text-neutral-400 mb-1">Video Title</label>
-            <input required value={form.title} onChange={e => setForm({...form, title: e.target.value})} placeholder="e.g. Advanced Elbow Counters" className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white" />
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-medium text-neutral-400 mb-1">Category</label>
-              <select value={form.category} onChange={e => setForm({...form, category: e.target.value})} className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white">
-                <option>Striking</option><option>BJJ</option><option>Grappling</option><option>Conditioning</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-neutral-400 mb-1">Level</label>
-              <select value={form.level} onChange={e => setForm({...form, level: e.target.value})} className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white">
-                <option>Beginner</option><option>Intermediate</option><option>Advanced</option>
-              </select>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-medium text-neutral-400 mb-1">Duration</label>
-              <input value={form.duration} onChange={e => setForm({...form, duration: e.target.value})} placeholder="12:30" className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white" />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-neutral-400 mb-1">YouTube Link / Embed URL</label>
-              <input required value={form.videoUrl} onChange={e => setForm({...form, videoUrl: e.target.value})} placeholder="https://youtu.be/..." className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white" />
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-neutral-400 mb-1">Description</label>
-            <textarea required rows="3" value={form.description} onChange={e => setForm({...form, description: e.target.value})} className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white" placeholder="Technique breakdown..." />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-neutral-400 mb-1">Key Takeaways (one per line)</label>
-            <textarea rows="2" value={form.takeaways} onChange={e => setForm({...form, takeaways: e.target.value})} className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white" placeholder="Keep chin tucked&#10;Rotate hips fully" />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-neutral-400 mb-1">Drill Instructions</label>
-            <input value={form.drills} onChange={e => setForm({...form, drills: e.target.value})} placeholder="5 rounds x 2 mins" className="w-full bg-neutral-950 border border-neutral-800 rounded p-2.5 text-sm text-white" />
-          </div>
-          <button type="submit" className="w-full bg-red-600 hover:bg-red-500 text-white font-semibold py-3 rounded text-sm transition-all">Publish Video</button>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-/* =========================================================================
-   DASHBOARD / VIDEO LIBRARY
-========================================================================= */
-const CATEGORIES = ["Striking", "BJJ", "Grappling", "Conditioning"];
-const LEVELS = ["Beginner", "Intermediate", "Advanced"];
-
-function Dashboard({ setView, setAuthMode }) {
-  const { currentUser } = useAuth();
-  const [videos, setVideos] = useState(() => {
-    const saved = localStorage.getItem("vanguards_videos");
-    return saved ? JSON.parse(saved) : INITIAL_VIDEOS;
-  });
-
-  const [activeCategories, setActiveCategories] = useState([]);
-  const [activeLevel, setActiveLevel] = useState("All");
-  const [search, setSearch] = useState("");
-  const [completedIds, setCompletedIds] = useState(new Set());
-  const [openVideo, setOpenVideo] = useState(null);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  if (!currentUser) return <AuthPage authMode="login" setAuthMode={setAuthMode} setView={setView} />;
-
-  const handleAddVideo = (newVideo) => {
-    const updated = [newVideo, ...videos];
-    setVideos(updated);
-    localStorage.setItem("vanguards_videos", JSON.stringify(updated));
-  };
-
-  const toggleCategory = (cat) => {
-    setActiveCategories((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
-  };
-
-  const toggleComplete = (id) => {
-    setCompletedIds((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
-  };
-
-  const filteredVideos = useMemo(() => {
-    return videos.filter((v) => {
-      const matchCat = activeCategories.length === 0 || activeCategories.includes(v.category);
-      const matchLevel = activeLevel === "All" || v.level === activeLevel;
-      const matchSearch = v.title.toLowerCase().includes(search.toLowerCase());
-      return matchCat && matchLevel && matchSearch;
-    });
-  }, [videos, activeCategories, activeLevel, search]);
-
-  return (
-    <div className="min-h-[calc(100vh-4rem)] bg-black py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
-          <div>
-            <span className="text-xs font-semibold tracking-[0.25em] text-red-500">THE LIBRARY</span>
-            <h1 className="text-3xl md:text-4xl text-white" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              WELCOME BACK, {currentUser.name.toUpperCase()}
-            </h1>
-          </div>
-          {currentUser.isAdmin && (
-            <button
-              onClick={() => setIsAddModalOpen(true)}
-              className="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold text-sm px-4 py-2.5 rounded-md transition-all"
-            >
-              <Plus className="w-4 h-4" /> Add New Video
-            </button>
-          )}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8">
-          <aside className="bg-neutral-900 border border-neutral-800 rounded-lg p-5 space-y-6 h-fit">
-            <div>
-              <label className="block text-xs font-semibold text-neutral-400 mb-2">SEARCH</label>
-              <div className="relative">
-                <Search className="w-4 h-4 text-neutral-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                <input
-                  value={search} onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Find technique..."
-                  className="w-full bg-neutral-950 border border-neutral-800 rounded pl-9 pr-3 py-2 text-sm text-white outline-none focus:border-red-600"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-neutral-400 mb-2">CATEGORY</label>
-              <div className="space-y-2">
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat} onClick={() => toggleCategory(cat)}
-                    className={`w-full flex items-center justify-between text-sm px-3 py-2 rounded border transition-all ${
-                      activeCategories.includes(cat) ? "bg-red-600/10 border-red-700/50 text-red-400" : "border-neutral-800 text-neutral-400"
-                    }`}
-                  >
-                    <span>{cat}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-neutral-400 mb-2">DIFFICULTY</label>
-              <div className="flex flex-wrap gap-2">
-                {["All", ...LEVELS].map((lvl) => (
-                  <button
-                    key={lvl} onClick={() => setActiveLevel(lvl)}
-                    className={`text-xs font-medium px-3 py-1.5 rounded-full border transition-all ${
-                      activeLevel === lvl ? "bg-red-600 border-red-600 text-white" : "border-neutral-800 text-neutral-400"
-                    }`}
-                  >
-                    {lvl}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </aside>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-            {filteredVideos.map((video) => {
-              const catStyle = CATEGORY_STYLES[video.category] || CATEGORY_STYLES.Striking;
-              const isCompleted = completedIds.has(video.id);
-              return (
-                <div
-                  key={video.id} onClick={() => setOpenVideo(video)}
-                  className="group bg-neutral-900 border border-neutral-800 hover:border-red-800/60 rounded-lg overflow-hidden cursor-pointer transition-all"
-                >
-                  <div className="relative h-40 bg-neutral-950 flex items-center justify-center overflow-hidden">
-                    <Video className="w-12 h-12 text-neutral-700 group-hover:text-red-500 transition-colors" />
-                    <span className="absolute bottom-2 right-2 bg-black/70 text-neutral-300 text-[11px] px-2 py-0.5 rounded flex items-center gap-1">
-                      <Clock className="w-3 h-3" /> {video.duration}
-                    </span>
-                  </div>
-                  <div className="p-4 border-t border-neutral-800">
-                    <div className="flex gap-2 mb-2">
-                      <span className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${catStyle.chip}`}>{video.category}</span>
-                      <span className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${LEVEL_STYLES[video.level]}`}>{video.level}</span>
-                    </div>
-                    <h3 className="text-white font-semibold text-sm">{video.title}</h3>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); toggleComplete(video.id); }}
-                      className={`mt-3 flex items-center gap-1.5 text-xs font-medium ${isCompleted ? "text-emerald-400" : "text-neutral-500 hover:text-neutral-300"}`}
-                    >
-                      {isCompleted ? <CheckCircle2 className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
-                      {isCompleted ? "Completed" : "Mark as Completed"}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {openVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setOpenVideo(null)}>
-          <div onClick={e => e.stopPropagation()} className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-5 border-b border-neutral-800">
-              <h2 className="text-xl text-white font-semibold">{openVideo.title}</h2>
-              <button onClick={() => setOpenVideo(null)} className="text-neutral-400 hover:text-white"><X className="w-5 h-5" /></button>
-            </div>
-            <div className="aspect-video bg-black">
-              <iframe src={openVideo.videoUrl} title={openVideo.title} className="w-full h-full" allowFullScreen />
-            </div>
-            <div className="p-6 space-y-4">
-              <p className="text-sm text-neutral-300">{openVideo.description}</p>
-              <div>
-                <h4 className="text-xs font-semibold text-white uppercase mb-2">Key Takeaways</h4>
-                <ul className="list-disc list-inside text-sm text-neutral-400 space-y-1">
-                  {openVideo.takeaways?.map((t, i) => <li key={i}>{t}</li>)}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <AddVideoModal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} onAddVideo={handleAddVideo} />
-    </div>
-  );
-}
-
-export default function App() {
-  const [view, setView] = useState("landing");
-  const [authMode, setAuthMode] = useState("login");
-
-  return (
-    <AuthProvider>
-      <div className="bg-black min-h-screen flex flex-col">
-        <Header view={view} setView={setView} setAuthMode={setAuthMode} />
-        <main className="flex-1">
-          {view === "landing" && <Landing setView={setView} setAuthMode={setAuthMode} />}
-          {view === "auth" && <AuthPage authMode={authMode} setAuthMode={setAuthMode} setView={setView} />}
-          {view === "dashboard" && <Dashboard setView={setView} setAuthMode={setAuthMode} />}
-        </main>
-        <Footer setView={setView} />
-      </div>
-    </AuthProvider>
-  );
-}
-
-createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>
