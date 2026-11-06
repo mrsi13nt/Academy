@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#090909" />
   <meta name="description" content="Vanguards MMA Academy — train smarter with structured MMA, striking, grappling and conditioning lessons." />
   <title>Vanguards MMA Academy</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥊</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,14 +21,37 @@
     .hero{min-height:610px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,#090909 5%,#090909ed 42%,#09090955 100%),url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=2000&q=85") center/cover}
     .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg),transparent 25%,transparent 80%,var(--bg));pointer-events:none}.hero-content{position:relative;z-index:1;padding:100px 0;max-width:720px}.eyebrow{color:#ff6571;font-size:11px;font-weight:800;letter-spacing:.25em;text-transform:uppercase}.hero h1{font:clamp(64px,9vw,112px)/.88 "Bebas Neue";margin:22px 0 18px;letter-spacing:.01em}.hero h1 span{color:var(--red)}.hero p{color:#c2c2c2;line-height:1.8;max-width:560px;font-size:16px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.stats{display:flex;gap:42px;margin-top:54px}.stat strong{font:36px "Bebas Neue";display:block}.stat span{font-size:11px;color:#999;letter-spacing:.08em}
     section{padding:82px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}.section-head h2{font:48px/.95 "Bebas Neue";margin:8px 0 0}.section-head p{max-width:430px;color:var(--muted);font-size:13px;line-height:1.7}.programs{background:#101010;border-block:1px solid var(--line)}.program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.program{background:linear-gradient(145deg,#1b1b1b,#101010);border:1px solid #292929;padding:24px;min-height:205px;border-radius:6px}.program .symbol{font-size:25px;color:var(--red)}.program h3{font-size:16px;margin:20px 0 9px}.program p{font-size:12px;line-height:1.7;color:#999;margin:0}
+    .program{display:flex;flex-direction:column}.program .program-tag{display:inline-flex;align-self:flex-start;margin-top:auto;padding-top:18px;color:#ff7b85;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+    .platform-intro{max-width:700px;color:var(--muted);font-size:14px;line-height:1.85;margin:-12px 0 34px}
+    .platform-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .platform-step{background:#111;border:1px solid var(--line);border-radius:6px;padding:22px}
+    .platform-step .step-no{font:34px 'Bebas Neue';color:var(--red)}
+    .platform-step h3{font-size:15px;margin:8px 0}
+    .platform-step p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}
+    .platform-note{margin-top:18px;padding:16px 18px;background:#151515;border-left:3px solid var(--red);color:#bbb;font-size:12px;line-height:1.8}
+    .contact-section{background:#101010;border-block:1px solid var(--line)}
+    .contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
+    .contact-copy h2{font:50px/.95 'Bebas Neue';margin:9px 0 15px}
+    .contact-copy>p{color:var(--muted);font-size:13px;line-height:1.85;max-width:520px}
+    .contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:25px}
+    .contact-card{padding:17px;background:#171717;border:1px solid #2b2b2b;border-radius:5px;min-width:0}
+    .contact-card span{display:block;color:#ff7781;font-size:10px;font-weight:800;letter-spacing:.16em;margin-bottom:8px}
+    .contact-card strong{font-size:13px;overflow-wrap:anywhere}
+    .contact-card small{display:block;color:#888;font-size:10px;margin-top:6px;line-height:1.6}
+    .contact-panel{padding:25px;background:#171717;border:1px solid #303030;border-radius:6px}
+    .contact-panel h3{font:30px 'Bebas Neue';margin:0 0 10px}
+    .contact-panel p,.contact-panel li{color:#aaa;font-size:12px;line-height:1.8}
+    .contact-panel ul{padding-left:18px;margin:10px 0 20px}
+    .contact-actions{display:flex;gap:9px;flex-wrap:wrap}
+    .edit-hint{font-size:10px!important;color:#777!important;margin-top:16px}
     .features{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.feature{border-top:2px solid var(--red);padding-top:20px}.feature h3{font-size:16px}.feature p{font-size:13px;color:var(--muted);line-height:1.8}
     .cta{background:linear-gradient(110deg,#8d101b,#df2636);padding:54px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:25px}.cta h2{font:45px "Bebas Neue";margin:0}.cta p{color:#ffe0e2;margin:7px 0 0;font-size:13px}.cta .btn{background:#090909;border-color:#090909}
     footer{border-top:1px solid var(--line);padding:35px 0;color:#888;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     .app-view{display:none;min-height:70vh;padding:42px 0 80px}.app-view.active{display:block}.panel{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:24px}.auth-wrap{max-width:460px;margin:35px auto}.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:12px;color:#bbb;font-weight:700}.field input,.field textarea,.field select{width:100%;background:#090909;border:1px solid #333;color:white;border-radius:4px;padding:12px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--red)}.field textarea{min-height:85px;resize:vertical}.muted{color:var(--muted)}.notice{padding:12px 14px;border-radius:4px;background:#201316;border:1px solid #5c2029;color:#ffabb1;font-size:13px;margin:14px 0}.success{background:#10231c;border-color:#245c43;color:#9ce8c4}.tabs{display:flex;gap:8px;margin-bottom:20px}.tabs button.active{background:var(--red);border-color:var(--red);color:white}
     .dashboard-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:25px}.dashboard-top h1{font:42px "Bebas Neue";margin:5px 0}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.toolbar input,.toolbar select{background:#111;border:1px solid #333;color:white;padding:10px;border-radius:4px}.toolbar input{flex:1;min-width:180px}.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.video-card{background:#121212;border:1px solid #292929;border-radius:6px;overflow:hidden;cursor:pointer;transition:.2s}.video-card:hover{transform:translateY(-3px);border-color:#81313a}.thumb{aspect-ratio:16/9;background:#222;position:relative;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.thumb .play{position:absolute;inset:0;display:grid;place-items:center;background:#0004;font-size:38px;text-shadow:0 2px 12px #000}.video-info{padding:15px}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px}.chip{font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:4px 7px;border:1px solid #444;border-radius:3px;color:#bbb}.video-info h3{font-size:14px;margin:0 0 9px}.video-info p{font-size:11px;color:#999;margin:0}.video-actions{display:flex;justify-content:space-between;align-items:center;margin-top:13px}.text-btn{border:0;background:none;color:#ff7781;font-size:12px;padding:0}.progressbar{height:5px;background:#333;border-radius:5px;overflow:hidden;margin-top:8px}.progressbar span{display:block;height:100%;background:var(--red)}
     .admin-layout{display:grid;grid-template-columns:220px 1fr;gap:20px}.admin-nav{display:grid;align-content:start;gap:8px}.admin-nav button{text-align:left}.admin-nav button.active{background:#301116;border-color:#76232d;color:#ff8b94}.admin-content h2{font:34px "Bebas Neue";margin:0 0 18px}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.admin-form .wide{grid-column:1/-1}.admin-list{display:grid;gap:9px;margin-top:20px}.admin-row{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:13px;background:#0b0b0b;border:1px solid #292929;border-radius:4px}.admin-row strong{font-size:13px}.admin-row small{display:block;color:#999;margin-top:4px}.student-admin-row{align-items:flex-start}.student-row-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.student-row-controls .level-control{display:grid;gap:4px}.student-row-controls label{font-size:10px;color:#999;font-weight:700}.student-row-controls select{background:#090909;border:1px solid #333;color:white;border-radius:4px;padding:8px;max-width:150px;font-size:12px}.modal{position:fixed;inset:0;background:#000d;z-index:50;display:none;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.modal-box{width:min(850px,100%);max-height:92vh;overflow:auto;background:#111;border:1px solid #333;border-radius:8px}.modal-head{display:flex;justify-content:space-between;padding:17px 20px;border-bottom:1px solid #333}.player{aspect-ratio:16/9;background:#000}.player iframe,.player video{width:100%;height:100%;border:0}.modal-body{padding:22px}.modal-body h2{margin:0 0 12px}.modal-body p,.modal-body li{color:#bbb;font-size:13px;line-height:1.7}.empty{padding:50px 20px;text-align:center;border:1px dashed #444;color:#999;border-radius:6px}.hidden{display:none!important}
-    @media(max-width:850px){nav{display:none}.mobile-menu{display:block}.program-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}.admin-layout{grid-template-columns:1fr}.admin-nav{grid-template-columns:repeat(4,1fr)}}
-    @media(max-width:560px){.wrap{width:min(100% - 28px,1160px)}.topbar{height:66px;padding:0 14px}.nav-actions .btn:not(.primary){display:none}.hero{min-height:590px}.hero-content{padding:75px 0}.hero h1{font-size:67px}.stats{gap:20px}.stat strong{font-size:29px}.section-head{display:block}.section-head h2{font-size:40px}.program-grid,.video-grid,.features{grid-template-columns:1fr}.program{min-height:160px}.cta{padding:30px;display:block}.cta .btn{margin-top:20px}.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-nav{grid-template-columns:repeat(2,1fr)}.admin-row.student-admin-row{flex-direction:column}.student-row-controls{width:100%}.student-row-controls .level-control{flex:1;min-width:130px}.student-row-controls select{max-width:none;width:100%}}
+    @media(max-width:850px){.platform-steps{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr}nav{display:none}.mobile-menu{display:block}.program-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:repeat(2,1fr)}.admin-layout{grid-template-columns:1fr}.admin-nav{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:560px){.platform-steps,.contact-cards{grid-template-columns:1fr}.contact-copy h2{font-size:42px}.wrap{width:min(100% - 28px,1160px)}.topbar{height:66px;padding:0 14px}.nav-actions .btn:not(.primary){display:none}.hero{min-height:590px}.hero-content{padding:75px 0}.hero h1{font-size:67px}.stats{gap:20px}.stat strong{font-size:29px}.section-head{display:block}.section-head h2{font-size:40px}.program-grid,.video-grid,.features{grid-template-columns:1fr}.program{min-height:160px}.cta{padding:30px;display:block}.cta .btn{margin-top:20px}.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-nav{grid-template-columns:repeat(2,1fr)}.admin-row.student-admin-row{flex-direction:column}.student-row-controls{width:100%}.student-row-controls .level-control{flex:1;min-width:130px}.student-row-controls select{max-width:none;width:100%}}
   </style>
 </head>
 <body>
@@ -51,18 +73,59 @@
       <div class="hero-actions"><button class="btn primary" onclick="showAuth('login')">MEMBER LOGIN →</button></div>
       <div class="stats"><div class="stat"><strong>4</strong><span>CORE DISCIPLINES</span></div><div class="stat"><strong>ALL LEVELS</strong><span>BEGINNER TO ADVANCED</span></div><div class="stat"><strong>24/7</strong><span>LEARN AT YOUR PACE</span></div></div>
     </div></div></section>
-    <section class="programs" id="programs"><div class="wrap"><div class="section-head"><div><div class="eyebrow">THE CURRICULUM</div><h2>ONE FIGHT GAME. FOUR DISCIPLINES.</h2></div><p>Develop the skills individually, understand how they connect, and build a complete MMA game through consistent practice.</p></div>
+    <!-- DISCIPLINES: edit the descriptions below to match the academy's exact curriculum. -->
+    <section class="programs" id="programs"><div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">THE CURRICULUM</div><h2>ONE FIGHT GAME. FOUR DISCIPLINES.</h2></div>
+        <p>Build a complete MMA skill set by developing each discipline and learning how to connect them under the demands of mixed martial arts.</p>
+      </div>
       <div class="program-grid">
-        <article class="program"><div class="symbol">✦</div><h3>Striking & Kickboxing</h3><p>Boxing combinations, kicks, knees, elbows, distance management and defensive movement.</p></article>
-        <article class="program"><div class="symbol">◈</div><h3>Brazilian Jiu-Jitsu</h3><p>Position, guard work, escapes, transitions, submissions and positional control.</p></article>
-        <article class="program"><div class="symbol">⌁</div><h3>Wrestling & Grappling</h3><p>Takedown entries, sprawls, cage wrestling, chain wrestling and scrambles.</p></article>
-        <article class="program"><div class="symbol">⚔</div><h3>MMA Integration</h3><p>Combine striking, takedowns and ground control into connected fight scenarios.</p></article>
+        <article class="program"><div class="symbol">✦</div><h3>Striking & Kickboxing</h3><p>Develop stance, footwork, boxing combinations, kicks, knees, elbows, defensive movement, distance control and timing. Progress from fundamental mechanics to combinations and tactical applications.</p><span class="program-tag">Stand-up skills</span></article>
+        <article class="program"><div class="symbol">◈</div><h3>Brazilian Jiu-Jitsu</h3><p>Study positional control, guard work, escapes, sweeps, transitions and submissions. Build the ability to defend, improve position and control an opponent safely on the ground.</p><span class="program-tag">Ground control</span></article>
+        <article class="program"><div class="symbol">⌁</div><h3>Wrestling & Grappling</h3><p>Work on stance, level changes, takedown entries, sprawls, body locks, clinch control, cage wrestling, chain wrestling and scrambling between positions.</p><span class="program-tag">Takedowns & control</span></article>
+        <article class="program"><div class="symbol">⚔</div><h3>MMA Integration</h3><p>Connect striking, clinch work, takedowns and ground skills through transitions, wall work, positional rounds and controlled scenario-based training.</p><span class="program-tag">Complete MMA</span></article>
+      </div>
+      <p class="edit-hint">ACADEMY EDIT: Replace or expand these descriptions to reflect the disciplines, class structure and coaching approach you actually offer.</p>
+    </div></section>
+
+    <!-- THE PLATFORM: describes the current member website features. -->
+    <section id="platform"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">THE MEMBER PLATFORM</div><h2>YOUR TRAINING. ORGANIZED.</h2></div></div>
+      <p class="platform-intro">The Vanguards member area is a companion to in-person coaching. Members sign in with an account created by the academy and use their assigned training level to access the lessons prepared for them.</p>
+      <div class="platform-steps">
+        <article class="platform-step"><div class="step-no">01</div><h3>Level-based video library</h3><p>Browse the video lessons assigned to your level: Beginner, Intermediate or Advanced. Lessons can be organized by discipline and topic.</p></article>
+        <article class="platform-step"><div class="step-no">02</div><h3>Track lesson progress</h3><p>Mark lessons as completed and see your progress in your member dashboard. Your progress is saved to your account so you can continue later.</p></article>
+        <article class="platform-step"><div class="step-no">03</div><h3>Coach-managed membership</h3><p>The academy administrator creates student accounts, assigns levels, publishes lessons, and manages membership access and expiry dates.</p></article>
+      </div>
+      <div class="platform-note"><strong>How to use it:</strong> Attend your scheduled coaching sessions, review relevant lessons between sessions, practise only what your coach has cleared you to practise, and ask your coach when a technique or progression is unclear. Online lessons support coaching; they do not replace supervised training.</div>
+    </div></section>
+
+    <!-- CONTACT: replace each bracketed placeholder before publishing. -->
+    <section class="contact-section" id="contact"><div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <div class="eyebrow">GET IN TOUCH</div>
+          <h2>START YOUR NEXT ROUND.</h2>
+          <p>Have a question about training, membership or the academy? Contact the Vanguards team using the details below. New student accounts are created by the academy administrator after enrolment.</p>
+          <div class="contact-cards">
+            <div class="contact-card"><span>PHONE / WHATSAPP</span><strong>[ADD PHONE NUMBER]</strong><small>Replace with your academy contact number, including country code.</small></div>
+            <div class="contact-card"><span>EMAIL</span><strong>[ADD EMAIL ADDRESS]</strong><small>Use an inbox that the academy checks regularly.</small></div>
+            <div class="contact-card"><span>LOCATION</span><strong>[ADD GYM ADDRESS]</strong><small>Add area, city and a map link if available.</small></div>
+            <div class="contact-card"><span>INSTAGRAM</span><strong>[ADD @USERNAME]</strong><small>Replace with your official social media handle.</small></div>
+          </div>
+          <p class="edit-hint">ACADEMY EDIT: Search index.html for “ADD” and replace each placeholder with your real contact information.</p>
+        </div>
+        <aside class="contact-panel">
+          <div class="eyebrow">MEMBERS & NEW STUDENTS</div>
+          <h3>HOW TO GET STARTED</h3>
+          <p><strong>Already a member?</strong><br>Use Member Login to open your assigned training library.</p>
+          <p><strong>Interested in joining?</strong><br>Contact the academy to ask about class availability, suitable training level, schedule, fees and enrolment.</p>
+          <ul><li>Ask which class or discipline suits your goals.</li><li>Share relevant training experience with the coach.</li><li>Wait for the academy to create your member account.</li></ul>
+          <div class="contact-actions"><button class="btn primary" onclick="showAuth('login')">MEMBER LOGIN →</button><a class="btn" href="#programs">EXPLORE DISCIPLINES</a></div>
+          <p class="edit-hint">Add a real WhatsApp, email or map link here once you have the correct destination URL.</p>
+        </aside>
       </div>
     </div></section>
-    <section id="platform"><div class="wrap"><div class="section-head"><div><div class="eyebrow">THE MEMBER PLATFORM</div><h2>YOUR TRAINING. ORGANIZED.</h2></div></div>
-      <div class="features"><article class="feature"><div class="eyebrow">01 / VIDEO LIBRARY</div><h3>Lessons you can revisit</h3><p>Browse your academy's video lessons by discipline and skill level. Open a lesson to review its breakdown and coaching notes.</p></article><article class="feature"><div class="eyebrow">02 / PROGRESS</div><h3>Keep track of your work</h3><p>Mark lessons as completed and keep your progress connected to your account across devices.</p></article><article class="feature"><div class="eyebrow">03 / COACHING</div><h3>Coach-managed content</h3><p>Your academy administrator can publish new lessons and update the library without changing website code.</p></article></div>
-    </div></section>
-    <section id="contact" style="padding-top:0"><div class="wrap"><div class="cta"><div><h2>READY TO PUT IN THE WORK?</h2><p>Student accounts are created and managed by the academy administrator.</p></div><button class="btn" onclick="showAuth('login')">MEMBER LOGIN →</button></div></div></section>
   </div>
 
   <section class="app-view" id="authView"><div class="wrap"><div class="panel auth-wrap">
@@ -97,7 +160,7 @@
     </div>
   </div></section>
 </main>
-<footer><div class="wrap footer-inner"><div><a class="brand" href="#" onclick="showView('home');return false"><span class="brandmark">V</span><span><strong>VANGUARDS <em>MMA</em></strong><small>ACADEMY</small></span></a><p>Train with purpose. Improve every round.</p></div><div>© <span id="year"></span> Vanguards MMA Academy · Train responsibly.</div></div></footer>
+<footer><div class="wrap footer-inner"><div><a class="brand" href="#" onclick="showView('home');return false"><span class="brandmark">V</span><span><strong>VANGUARDS <em>MMA</em></strong><small>ACADEMY</small></span></a><p>Train with purpose. Improve every round.</p></div><div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center"><a href="#programs">Disciplines</a><a href="#platform">The Platform</a><a href="#contact">Contact</a><span>© <span id="year"></span> Vanguards MMA Academy</span></div></div></footer>
 
 <div class="modal" id="videoModal" onclick="if(event.target===this)closeVideo()"><div class="modal-box"><div class="modal-head"><strong id="modalTitle">Lesson</strong><button class="btn small" onclick="closeVideo()">✕ CLOSE</button></div><div class="player" id="videoPlayer"></div><div class="modal-body"><div class="chips" id="modalChips"></div><p id="modalDescription"></p><h3 style="font-size:13px">KEY TAKEAWAYS</h3><ul id="modalTakeaways"></ul><p id="modalDrills"></p><button class="btn primary" id="completeButton">MARK AS COMPLETED</button></div></div></div>
 
