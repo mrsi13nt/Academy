@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+    // Replace this UID with the UID of the academy owner/admin.
+    function isAdmin() {
+      return signedIn() && request.auth.uid == "PASTE_YOUR_ADMIN_UID_HERE";
+    }
+
+    match /users/{userId} {
+      allow read: if signedIn() && (request.auth.uid == userId || isAdmin());
+      // Users may create their own profile, but cannot grant themselves admin.
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.role == "student";
+      allow update: if signedIn() && (request.auth.uid == userId || isAdmin())
+        && (isAdmin() || request.resource.data.role == resource.data.role);
+      allow delete: if isAdmin();
+
+      match /progress/{videoId} {
+        allow read, write: if signedIn() && request.auth.uid == userId;
+      }
+    }
+
+    match /videos/{videoId} {
+      allow read: if signedIn();
+      allow create: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+  }
+}
